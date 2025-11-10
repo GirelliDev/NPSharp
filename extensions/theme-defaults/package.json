@@ -50,8 +50,8 @@
         "path": "./themes/light_vs.json"
       },
       {
-        "id": "Default High Contrast",
-        "label": "%hcColorThemeLabel%",
+        "id": "Notepad# OffShore",
+        "label": "NotepadsharpOffShore",
         "uiTheme": "hc-black",
         "path": "./themes/hc_black.json"
       },
