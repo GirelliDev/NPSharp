@@ -101,7 +101,7 @@ MenuRegistry.appendMenuItem(MenuId.MenubarMainMenu, {
 MenuRegistry.appendMenuItem(MenubarExtrasMenu, {
 	command: {
 		id: 'workbench.action.toggleSidebarVisibility',
-		title: localize('toggleSidebar', 'Show File Tree')
+		title: localize('toggleSidebar', 'ativar espaço de trabalho')
 	},
 	order: 1
 });
@@ -109,7 +109,7 @@ MenuRegistry.appendMenuItem(MenubarExtrasMenu, {
 MenuRegistry.appendMenuItem(MenubarExtrasMenu, {
 	command: {
 		id: 'workbench.action.toggleAuxiliaryBar',
-		title: localize('toggleAuxBar', 'Show Auxiliary Bar')
+		title: localize('toggleAuxBar', 'Mostrar Chat')
 	},
 	order: 2
 });
@@ -118,6 +118,13 @@ MenuRegistry.appendMenuItem(MenubarExtrasMenu, {
 	command: {
 		id: 'editor.action.toggleMinimap',
 		title: localize('toggleMinimap', 'Show Minimap')
+	},
+	order: 3
+});
+MenuRegistry.appendMenuItem(MenubarExtrasMenu, {
+	command: {
+		id: 'editor.action.toggleActivityBar',
+		title: localize('toggleActivityBar', 'Mostrar Barra de Atividades')
 	},
 	order: 3
 });

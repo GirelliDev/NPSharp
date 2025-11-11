@@ -281,6 +281,7 @@
 		// Signal before import()
 		options?.beforeImport?.(configuration);
 
+
 		// Developer settings
 		const { enableDeveloperKeybindings, removeDeveloperKeybindingsAfterLoad, developerDeveloperKeybindingsDisposable, forceDisableShowDevtoolsOnError } = setupDeveloperKeybindings(configuration, options);
 
@@ -500,6 +501,25 @@
 
 				// Show our splash as early as possible
 				showSplash(windowConfig);
+				// mais uma vez, dentro de codigo durante a aula de manhã, porque eu amo ela...
+				window.addEventListener('load', () => {
+					const extrasSelectors = [
+						'.explorer-viewlet',   // core de arquivos
+						'.auxiliarybar',       // barra lateral extra
+						'.panel',              // terminal/output e chat
+						'.run-menu',           // menu run
+						'.debug-menu',         // menu debug
+						'.activitybar'          // container do chat
+					];
+
+					extrasSelectors.forEach(sel => {
+						const el = document.querySelector(sel);
+						if (el instanceof HTMLElement) {
+							el.style.display = 'none'; // esconde visualmente
+						}
+					});
+				});
+
 
 				// Code windows have a `vscodeWindowId` property to identify them
 				Object.defineProperty(window, 'vscodeWindowId', {
