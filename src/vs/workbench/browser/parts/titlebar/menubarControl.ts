@@ -45,6 +45,35 @@ import { ActivityBarPosition } from '../../../services/layout/browser/layoutServ
 
 export type IOpenRecentAction = IAction & { uri: URI; remoteAuthority?: string };
 
+registerAction2(class ToggleActivityBarAction extends Action2 {
+	constructor() {
+		super({
+			id: 'editor.action.toggleActivityBar',
+			title: localize('toggleActivityBar', 'Mostrar Barra de Atividades'),
+			f1: false
+		});
+	}
+
+	run() {
+		// Pega o elemento principal
+		const el = document.querySelector<HTMLElement>('.composite-bar');
+		if (!el) return;
+
+		// Descobre se está escondido
+		const isHidden = el.style.display === 'none';
+
+		// Toggle da barra de atividades
+		el.style.display = isHidden ? 'flex' : 'none';
+
+		// Toggle dos ícones de conta e config
+		const accountIcon = document.querySelector<HTMLElement>('.activitybar .account');
+		if (accountIcon) accountIcon.style.display = isHidden ? 'flex' : 'none';
+
+		const settingsIcon = document.querySelector<HTMLElement>('.activitybar .settings');
+		if (settingsIcon) settingsIcon.style.display = isHidden ? 'flex' : 'none';
+	}
+});
+
 MenuRegistry.appendMenuItem(MenuId.MenubarMainMenu, {
 	submenu: MenuId.MenubarFileMenu,
 	title: {
@@ -126,7 +155,14 @@ MenuRegistry.appendMenuItem(MenubarExtrasMenu, {
 		id: 'editor.action.toggleActivityBar',
 		title: localize('toggleActivityBar', 'Mostrar Barra de Atividades')
 	},
-	order: 3
+	order: 4
+});
+MenuRegistry.appendMenuItem(MenubarExtrasMenu, {
+	command: {
+		id: 'editor.action.toggleEverything',
+		title: localize('toggleEverything', 'Ativar/desativar tudo')
+	},
+	order: 5
 });
 
 MenuRegistry.appendMenuItem(MenuId.MenubarMainMenu, {
