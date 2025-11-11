@@ -84,6 +84,43 @@ MenuRegistry.appendMenuItem(MenuId.MenubarMainMenu, {
 	},
 	order: 4
 });
+export const MenubarExtrasMenu = new MenuId('MenubarExtrasMenu');
+
+//Mais uma vez me metendo em codigos só porque amo a thainá
+MenuRegistry.appendMenuItem(MenuId.MenubarMainMenu, {
+	submenu: MenubarExtrasMenu,
+	title: {
+		value: localize('mExtras', 'Extras'),
+		original: 'Extras',
+		mnemonicTitle: localize({ key: 'mExtrasMnemonic', comment: ['&& denotes a mnemonic'] }, '&&Extras')
+	},
+	order: 9.5 // define a posição — entre Go (9) e Terminal (10), por exemplo
+});
+
+// 3. Adiciona ações dentro dele
+MenuRegistry.appendMenuItem(MenubarExtrasMenu, {
+	command: {
+		id: 'workbench.action.toggleSidebarVisibility',
+		title: localize('toggleSidebar', 'Show File Tree')
+	},
+	order: 1
+});
+
+MenuRegistry.appendMenuItem(MenubarExtrasMenu, {
+	command: {
+		id: 'workbench.action.toggleAuxiliaryBar',
+		title: localize('toggleAuxBar', 'Show Auxiliary Bar')
+	},
+	order: 2
+});
+
+MenuRegistry.appendMenuItem(MenubarExtrasMenu, {
+	command: {
+		id: 'editor.action.toggleMinimap',
+		title: localize('toggleMinimap', 'Show Minimap')
+	},
+	order: 3
+});
 
 MenuRegistry.appendMenuItem(MenuId.MenubarMainMenu, {
 	submenu: MenuId.MenubarGoMenu,
@@ -124,15 +161,6 @@ MenuRegistry.appendMenuItem(MenuId.MenubarMainMenu, {
 	},
 	when: IsMacNativeContext,
 	order: 9
-});
-MenuRegistry.appendMenuItem(MenuId.MenubarMainMenu, {
-	submenu: MenuId.MenubarExtrasMenu,
-	title: {
-		value: 'Extras',
-		original: 'Extras',
-		mnemonicTitle: localize({ key: 'mExtras', comment: ['&& denotes a mnemonic'] }, "Extras")
-	},
-	order: 10
 });
 
 
