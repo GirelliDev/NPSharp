@@ -1,0 +1,15 @@
+{
+  "private": true,
+  "dependencies": {
+    "@microsoft/coverage-services.win32-x64": "18.0.0-preview.25405.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://devdiv.visualstudio.com/DevDiv/_git/vs-code-coverage",
+    "branch": "main",
+    "commit": "dd05eb43b1eaa5b16698ba7d5fb1927678c8e162"
+  },
+  "unoptimizedAlternatives": {
+    "@microsoft/coverage-services.win32-x64": "@microsoft/coverage-services.win32-x64.unoptimized"
+  }
+}

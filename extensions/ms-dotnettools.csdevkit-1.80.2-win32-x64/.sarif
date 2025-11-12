@@ -1,0 +1,91 @@
+{
+  "$schema": "https://schemastore.azurewebsites.net/schemas/json/sarif-2.1.0-rtm.6.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "results": [],
+      "tool": {
+        "driver": {
+          "name": "Spmi",
+          "organization": "Microsoft",
+          "product": "Microsoft SARIF Pattern Matcher",
+          "fullName": "Sarif.PatternMatcher.Cli 5.34.0.0",
+          "version": "5.34.0.7",
+          "semanticVersion": "5.34.0+1bbbe12bcf",
+          "dottedQuadFileVersion": "5.34.0.0",
+          "informationUri": "https://aka.ms/sarif-pattern-matcher",
+          "properties": {
+            "comments": "A general pattern matcher that persists results to the SARIF format."
+          }
+        },
+        "extensions": [
+          {
+            "guid": "bd493a96-7b2e-4328-af48-ccd5d5caa37f",
+            "name": "Microsoft/Security.Internal/DoNotExposePlaintextSecrets",
+            "locations": [
+              {
+                "uri": "file:///D:/a/_work/_gdn/packages/nuget/Sarif.PatternMatcher.Cli.win-x64.5.34.0/tools/SEC101.SecurePlaintextSecretsInternal.json",
+                "index": 0
+              }
+            ]
+          },
+          {
+            "guid": "42e5b5d3-6dc2-4bae-b9e1-0271ef7b7e82",
+            "name": "Microsoft/Security.Internal/DoNotExposeMicrosoftOnlyPlaintextSecrets",
+            "locations": [
+              {
+                "uri": "file:///D:/a/_work/_gdn/packages/nuget/Sarif.PatternMatcher.Cli.win-x64.5.34.0/tools/SEC101.SecureMicrosoftOnlyPlaintextSecretsInternal.json",
+                "index": 1
+              }
+            ]
+          }
+        ]
+      },
+      "invocations": [
+        {
+          "startTimeUtc": "2025-11-12T19:06:07.252Z",
+          "endTimeUtc": "2025-11-12T19:06:08.523Z",
+          "executionSuccessful": true
+        }
+      ],
+      "versionControlProvenance": [
+        {
+          "repositoryUri": "https://devdiv.visualstudio.com/devdiv/DevDiv/_git/vs-green",
+          "properties": {
+            "OrganizationName": "devdiv",
+            "ProjectId": "0bdbc590-a062-4c3f-b0f6-9383f67865ee",
+            "ProjectName": "DevDiv",
+            "RepositoryId": "a04d8981-69e0-4ef0-aded-82f817085a75",
+            "RepositoryName": "vs-green",
+            "CommitSha": "0000000000000000000000000000000000000000"
+          }
+        }
+      ],
+      "artifacts": [
+        {
+          "location": {
+            "uri": "file:///D:/a/_work/_gdn/packages/nuget/Sarif.PatternMatcher.Cli.win-x64.5.34.0/tools/SEC101.SecurePlaintextSecretsInternal.json"
+          },
+          "hashes": {
+            "sha-1": "DEE116F18787509264326C362D7914675015CAF8",
+            "sha-256": "536D313F2EC2260BC33DBEAD2A9CF375109AA22C4422871B3558650D40EB41B2"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///D:/a/_work/_gdn/packages/nuget/Sarif.PatternMatcher.Cli.win-x64.5.34.0/tools/SEC101.SecureMicrosoftOnlyPlaintextSecretsInternal.json"
+          },
+          "hashes": {
+            "sha-1": "0F942846678845F57C1F7F37F636400217307024",
+            "sha-256": "FE5D64F897D957C15C97FAB27D677DD94AAE7627CF55D3414733D8F1A7A7642D"
+          }
+        }
+      ],
+      "automationDetails": {
+        "id": "Guardian/devdiv/0bdbc590-a062-4c3f-b0f6-9383f67865ee/17523/12767470/Windows",
+        "guid": "856c021d-555c-4788-8a01-c830b1ead955"
+      },
+      "columnKind": "utf16CodeUnits"
+    }
+  ]
+}

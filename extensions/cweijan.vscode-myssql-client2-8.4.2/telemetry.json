@@ -1,0 +1,73 @@
+{
+    "events": {
+        "Active": {},
+        "View": {
+            "page": { "classification": "PublicNonPersonalData", "purpose": "FeatureInsight", "comment": "Event target page." }
+        },
+        "Connection": {
+            "operation": { "classification": "PublicNonPersonalData", "purpose": "FeatureInsight", "comment": "Scope of connection (global or workspace)." }
+        }
+    },
+    "commonProperties": {
+        "machine_id": {
+            "classification": "EndUserPseudonymizedInformation",
+            "purpose": "FeatureInsight",
+            "comment": "An identifier provided by VS Code to relate coding sessions from the same installation together"
+        },
+        "extension": {
+            "classification": "PublicNonPersonalData",
+            "purpose": "FeatureInsight",
+            "comment": "The name of the Database Client extension"
+        },
+        "version": {
+            "classification": "PublicNonPersonalData",
+            "purpose": "FeatureInsight",
+            "comment": "The version of the Database Client extension"
+        },
+        "code_version": {
+            "classification": "SystemMetaData",
+            "purpose": "FeatureInsight",
+            "comment": "The version of VS Code running the extension"
+        },
+        "remote_name": {
+            "classification": "SystemMetaData",
+            "purpose": "FeatureInsight",
+            "comment": "The 'remoteName' from VS Code (such as 'ssh' or 'docker' for remote workspaces)"
+        },
+        "is_dev": {
+            "classification": "SystemMetaData",
+            "purpose": "FeatureInsight",
+            "comment": "Whether the extension is running in development mode"
+        },
+        "os": {
+            "classification": "SystemMetaData",
+            "purpose": "FeatureInsight",
+            "comment": "The platform/OS the extension is running on"
+        },
+        "app_name": {
+            "classification": "SystemMetaData",
+            "purpose": "FeatureInsight",
+            "comment": "The name of the editor application (usually VS Code, but could be another editor that runs VS Code extensions such as from open-vsix)"
+        },
+        "app_host": {
+            "classification": "SystemMetaData",
+            "purpose": "FeatureInsight",
+            "comment": "The hosted location of the application"
+        },
+        "language": {
+            "classification": "SystemMetaData",
+            "purpose": "FeatureInsight",
+            "comment": "Represents the preferred user-language, like `de-CH`, `fr`, or `en-US`."
+        },
+        "is_new": {
+            "classification": "PublicNonPersonalData",
+            "purpose": "FeatureInsight",
+            "comment": "Whether the new user to install Database Client."
+        },
+        "db_type": {
+            "classification": "PublicNonPersonalData",
+            "purpose": "FeatureInsight",
+            "comment": "The target service type of the connection."
+        }
+    }
+}

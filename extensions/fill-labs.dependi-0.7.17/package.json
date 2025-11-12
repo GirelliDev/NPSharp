@@ -1,0 +1,998 @@
+{
+	"name": "dependi",
+	"displayName": "Dependi",
+	"description": "Empowers developers to efficiently manage dependencies and address vulnerabilities in Rust, Go, JavaScript, Typescript, PHP and Python projects.",
+	"version": "0.7.17",
+	"publisher": "fill-labs",
+	"author": {
+		"name": "Fill Labs",
+		"email": "info@dependi.io"
+	},
+	"license": "SEE LICENSE IN LICENSE",
+	"bugs": {
+		"url": "https://github.com/filllabs/dependi/issues",
+		"email": "info@dependi.io"
+	},
+	"homepage": "https://github.com/filllabs/dependi/blob/master/README.md",
+	"engines": {
+		"vscode": "^1.87.0"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/filllabs/dependi.git"
+	},
+	"icon": "icon.png",
+	"keywords": [
+		"rust",
+		"python",
+		"go",
+		"golang",
+		"node",
+		"js",
+		"javascript",
+		"ts",
+		"typescript",
+		"crates",
+		"pypi",
+		"pip",
+		"npm",
+		"php",
+		"dart",
+		"flutter",
+		"pubspec",
+		"packagist",
+		"composer",
+		"cargo",
+		"package",
+		"dependi",
+		"requirements",
+		"go.mod",
+		"dependency",
+		"version",
+		"vulnerability",
+		"security",
+		"update",
+		"toml"
+	],
+	"categories": [
+		"Programming Languages",
+		"Visualization",
+		"Other"
+	],
+	"pricing": "Free",
+	"activationEvents": [
+		"onLanguage:toml",
+		"workspaceContains:**/Cargo.toml",
+		"onLanguage:go.mod",
+		"workspaceContains:**/go.mod",
+		"onLanguage:package.json",
+		"workspaceContains:**/package.json",
+		"onLanguage:composer.json",
+		"workspaceContains:**/composer.json",
+		"onLanguage:requirements.txt",
+		"workspaceContains:**/requirements.txt",
+		"onLanguage:requirements.in",
+		"workspaceContains:**/requirements.in",
+		"onLanguage:pixi.toml",
+		"workspaceContains:**/pixi.toml",
+		"onLanguage:pyproject.toml",
+		"workspaceContains:**/pyproject.toml",
+		"onLanguage:pubspec.yaml",
+		"workspaceContains:**/pubspec.yaml"
+	],
+	"contributes": {
+		"menus": {
+			"editor/title": [
+				{
+					"when": "dependi.hasLockFile && resourceFilename != 'go.mod' && !(resourceFilename =~ /^requirement/) ",
+					"command": "dependi.commands.lockFileParsed",
+					"group": "navigation@103"
+				},
+				{
+					"when": "!dependi.hasLockFile && dependi.isLockFileEnabled && resourceFilename in dependi.supportedFiles && resourceFilename != 'go.mod' && !(resourceFilename =~ /^requirement/)",
+					"command": "dependi.commands.disableLockFileParsing",
+					"group": "navigation@103"
+				},
+				{
+					"when": "!dependi.hasLockFile && !dependi.isLockFileEnabled && resourceFilename in dependi.supportedFiles && resourceFilename != 'go.mod' && !(resourceFilename =~ /^requirement/)",
+					"command": "dependi.commands.enableLockFileParsing",
+					"group": "navigation@103"
+				},
+				{
+					"when": "resourceFilename in dependi.supportedFiles",
+					"command": "dependi.commands.vulnerability.report",
+					"group": "navigation@104"
+				},
+				{
+					"when": "resourceFilename in dependi.supportedFiles",
+					"command": "dependi.commands.vulnerability.currentReport",
+					"group": "navigation@104"
+				},
+				{
+					"when": "resourceFilename in dependi.supportedFiles",
+					"command": "dependi.commands.updateAll",
+					"group": "navigation@102"
+				},
+				{
+					"when": "resourceFilename in dependi.supportedFiles",
+					"command": "dependi.commands.retry",
+					"group": "navigation@101"
+				}
+			]
+		},
+		"commands": [
+			{
+				"command": "dependi.commands.replaceVersion",
+				"title": "Do not call manually ! Replace Version of the provided dependency",
+				"category": "Dependi"
+			},
+			{
+				"command": "dependi.commands.retry",
+				"title": "Retry to fetch dependencies",
+				"category": "Dependi",
+				"icon": {
+					"dark": "./icons/retry-dark.svg",
+					"light": "./icons/retry-light.svg"
+				}
+			},
+			{
+				"command": "dependi.commands.updateAll",
+				"title": "Update All dependencies to latest version",
+				"category": "Dependi",
+				"icon": {
+					"dark": "./icons/update-dark.svg",
+					"light": "./icons/update-light.svg"
+				}
+			},
+			{
+				"command": "dependi.commands.vulnerability.report",
+				"title": "Generate vulnerability report compared to latest dependency commit",
+				"category": "Dependi",
+				"icon": {
+					"dark": "./icons/vuln-rep-comp-dark.svg",
+					"light": "./icons/vuln-rep-comp-light.svg"
+				}
+			},
+			{
+				"command": "dependi.commands.vulnerability.currentReport",
+				"title": "Generate vulnerability report the current dependencies",
+				"category": "Dependi",
+				"icon": {
+					"dark": "./icons/vuln-rep-dark.svg",
+					"light": "./icons/vuln-rep-light.svg"
+				}
+			},
+			{
+				"command": "dependi.commands.enableLockFileParsing",
+				"title": "Enable Lock File Parsing",
+				"category": "Dependi",
+				"icon": "$(unlock)"
+			},
+			{
+				"command": "dependi.commands.disableLockFileParsing",
+				"title": "Disable Lock File Parsing",
+				"category": "Dependi",
+				"icon": "$(lock)"
+			},
+			{
+				"command": "dependi.commands.lockFileParsed",
+				"title": "Disable Lock File Parsing",
+				"category": "Dependi",
+				"icon": {
+					"dark": "./icons/lock-doc-dark.svg",
+					"light": "./icons/lock-doc-light.svg"
+				}
+			}
+		],
+		"configuration": [
+			{
+				"title": "Dependi API Settings",
+				"properties": {
+					"dependi.apiURL": {
+						"type": "string",
+						"scope": "resource",
+						"description": "The API URL for the index server.",
+						"format": "url",
+						"pattern": "^https?://(?!.*//)([^/]+/)*[^/]+$",
+						"default": "https://index.dependi.io",
+						"order": 1
+					},
+					"dependi.apiKey": {
+						"type": "string",
+						"scope": "resource",
+						"default": "",
+						"description": "API key for accessing enhanced features.",
+						"order": 2
+					}
+				}
+			},
+			{
+				"title": "Rust Settings",
+				"properties": {
+					"dependi.rust.enabled": {
+						"type": "boolean",
+						"scope": "resource",
+						"default": true,
+						"description": "Enable checking for Rust dependencies.",
+						"order": 4
+					},
+					"dependi.rust.indexServerURL": {
+						"type": "string",
+						"scope": "resource",
+						"description": "The URL for the Rust package index server.",
+						"format": "url",
+						"pattern": "^https?://(?!.*//)([^/]+/)*[^/]+$",
+						"default": "https://index.crates.io",
+						"order": 5
+					},
+					"dependi.rust.unstableFilter": {
+						"type": "string",
+						"enum": [
+							"Exclude",
+							"IncludeAlways",
+							"IncludeIfUnstable"
+						],
+						"default": "Exclude",
+						"scope": "resource",
+						"enumDescriptions": [
+							"Exclude them (default)",
+							"Include them and always consider as latest",
+							"Include if the current version is already unstable"
+						],
+						"description": "Filter unstable versions: Exclude, Include Always, or Include If Unstable.",
+						"order": 6
+					},
+					"dependi.rust.ignoreLinePatterns": {
+						"type": "string",
+						"scope": "resource",
+						"default": "",
+						"markdownDescription": "Matches lines based on `*` position: `text*`, `*text`, `*text*`. Multiple patterns can be used, separated by commas.",
+						"order": 7
+					},
+					"dependi.rust.informPatchUpdates": {
+						"type": "boolean",
+						"scope": "resource",
+						"default": false,
+						"description": "Inform about available patch updates for Rust packages via decoration.",
+						"order": 8
+					},
+					"dependi.rust.lockFileEnabled": {
+						"type": "boolean",
+						"scope": "resource",
+						"default": true,
+						"description": "Enable checking for Rust dependencies in lockfiles.",
+						"order": 9
+					},
+					"dependi.rust.silenceVersionOverflows": {
+						"type": "boolean",
+						"scope": "resource",
+						"default": false,
+						"description": "Consider non-registry packages as up-to-date if their version exceeds the max.",
+						"order": 10
+					}
+				}
+			},
+			{
+				"title": "JavaScript/TypeScript Settings",
+				"properties": {
+					"dependi.npm.enabled": {
+						"type": "boolean",
+						"scope": "resource",
+						"default": true,
+						"description": "Enable checking for Npm dependencies.",
+						"order": 11
+					},
+					"dependi.npm.indexServerURL": {
+						"type": "string",
+						"scope": "resource",
+						"description": "The URL for the NPM package index server.",
+						"format": "url",
+						"default": "https://registry.npmjs.org",
+						"pattern": "^https?://(?!.*//)([^/]+/)*[^/]+$",
+						"order": 12
+					},
+					"dependi.npm.unstableFilter": {
+						"type": "string",
+						"enum": [
+							"Exclude",
+							"IncludeAlways",
+							"IncludeIfUnstable"
+						],
+						"default": "Exclude",
+						"scope": "resource",
+						"enumDescriptions": [
+							"Exclude them (default)",
+							"Include them and always consider as latest",
+							"Include if the current version is already unstable"
+						],
+						"description": "Filter unstable versions: Exclude, Include Always, or Include If Unstable.",
+						"order": 13
+					},
+					"dependi.npm.ignoreLinePatterns": {
+						"type": "string",
+						"scope": "resource",
+						"default": "",
+						"order": 14,
+						"markdownDescription": "Matches lines based on `*` position: `text*`, `*text`, `*text*`. Multiple patterns can be used, separated by commas."
+					},
+					"dependi.npm.informPatchUpdates": {
+						"type": "boolean",
+						"scope": "resource",
+						"default": false,
+						"description": "Inform about available patch updates for NPM packages via decoration.",
+						"order": 15
+					},
+					"dependi.npm.lockFileEnabled": {
+						"type": "boolean",
+						"scope": "resource",
+						"default": true,
+						"description": "Enable checking for Npm dependencies in lockfiles.",
+						"order": 16
+					},
+					"dependi.npm.silenceVersionOverflows": {
+						"type": "boolean",
+						"scope": "resource",
+						"default": false,
+						"description": "Consider non-registry packages as up-to-date if their version exceeds the max.",
+						"order": 17
+					}
+				}
+			},
+			{
+				"title": "Go Settings",
+				"properties": {
+					"dependi.go.enabled": {
+						"type": "boolean",
+						"scope": "resource",
+						"default": true,
+						"description": "Enable checking for Go dependencies.",
+						"order": 18
+					},
+					"dependi.go.indexServerURL": {
+						"type": "string",
+						"scope": "resource",
+						"description": "The URL for the Go package index server.",
+						"format": "url",
+						"pattern": "^https?://(?!.*//)([^/]+/)*[^/]+$",
+						"default": "https://proxy.golang.org",
+						"order": 19
+					},
+					"dependi.go.unstableFilter": {
+						"type": "string",
+						"enum": [
+							"Exclude",
+							"IncludeAlways",
+							"IncludeIfUnstable"
+						],
+						"default": "Exclude",
+						"scope": "resource",
+						"enumDescriptions": [
+							"Exclude them (default)",
+							"Include them and always consider as latest",
+							"Include if the current version is already unstable"
+						],
+						"description": "Filter unstable versions: Exclude, Include Always, or Include If Unstable.",
+						"order": 20
+					},
+					"dependi.go.ignoreLinePatterns": {
+						"type": "string",
+						"scope": "resource",
+						"default": "",
+						"markdownDescription": "Matches lines based on `*` position: `text*`, `*text`, `*text*`. Multiple patterns can be used, separated by commas.",
+						"order": 21
+					},
+					"dependi.go.informPatchUpdates": {
+						"type": "boolean",
+						"scope": "resource",
+						"default": false,
+						"description": "Inform about available patch updates for Go packages via decoration.",
+						"order": 22
+					},
+					"dependi.go.silenceVersionOverflows": {
+						"type": "boolean",
+						"scope": "resource",
+						"default": false,
+						"description": "Consider non-registry packages as up-to-date if their version exceeds the max.",
+						"order": 23
+					}
+				}
+			},
+			{
+				"title": "Python Settings",
+				"properties": {
+					"dependi.python.enabled": {
+						"type": "boolean",
+						"scope": "resource",
+						"default": true,
+						"description": "Enable checking for Python dependencies.",
+						"order": 24
+					},
+					"dependi.python.indexServerURL": {
+						"type": "string",
+						"scope": "resource",
+						"description": "The URL for the Python package index server.",
+						"format": "url",
+						"pattern": "^https?://(?!.*//)([^/]+/)*[^/]+$",
+						"default": "https://pypi.org/pypi",
+						"order": 25
+					},
+					"dependi.python.unstableFilter": {
+						"type": "string",
+						"enum": [
+							"Exclude",
+							"IncludeAlways",
+							"IncludeIfUnstable"
+						],
+						"default": "Exclude",
+						"scope": "resource",
+						"enumDescriptions": [
+							"Exclude them (default)",
+							"Include them and always consider as latest",
+							"Include if the current version is already unstable"
+						],
+						"description": "Filter unstable versions: Exclude, Include Always, or Include If Unstable.",
+						"order": 26
+					},
+					"dependi.python.ignoreLinePatterns": {
+						"type": "string",
+						"scope": "resource",
+						"default": "",
+						"markdownDescription": "Matches lines based on `*` position: `text*`, `*text`, `*text*`. Multiple patterns can be used, separated by commas.",
+						"order": 27
+					},
+					"dependi.python.informPatchUpdates": {
+						"type": "boolean",
+						"scope": "resource",
+						"default": false,
+						"description": "Inform about available patch updates for Python packages via decoration.",
+						"order": 28
+					},
+					"dependi.python.lockFileEnabled": {
+						"type": "boolean",
+						"scope": "resource",
+						"default": true,
+						"description": "Enable checking for Python dependencies in lockfiles.",
+						"order": 29
+					},
+					"dependi.python.silenceVersionOverflows": {
+						"type": "boolean",
+						"scope": "resource",
+						"default": false,
+						"description": "Consider non-registry packages as up-to-date if their version exceeds the max.",
+						"order": 30
+					}
+				}
+			},
+			{
+				"title": "PHP Settings",
+				"properties": {
+					"dependi.php.enabled": {
+						"type": "boolean",
+						"scope": "resource",
+						"default": true,
+						"description": "Enable checking for PHP dependencies.",
+						"order": 31
+					},
+					"dependi.php.indexServerURL": {
+						"type": "string",
+						"scope": "resource",
+						"description": "The URL for the PHP package index server.",
+						"format": "url",
+						"pattern": "^https?://(?!.*//)([^/]+/)*[^/]+$",
+						"default": "https://repo.packagist.org",
+						"order": 32
+					},
+					"dependi.php.unstableFilter": {
+						"type": "string",
+						"enum": [
+							"Exclude",
+							"IncludeAlways",
+							"IncludeIfUnstable"
+						],
+						"default": "Exclude",
+						"scope": "resource",
+						"enumDescriptions": [
+							"Exclude them (default)",
+							"Include them and always consider as latest",
+							"Include if the current version is already unstable"
+						],
+						"description": "Filter unstable versions: Exclude, Include Always, or Include If Unstable.",
+						"order": 33
+					},
+					"dependi.php.ignoreLinePatterns": {
+						"type": "string",
+						"scope": "resource",
+						"default": "",
+						"markdownDescription": "Matches lines based on `*` position: `text*`, `*text`, `*text*`. Multiple patterns can be used, separated by commas.",
+						"order": 34
+					},
+					"dependi.php.informPatchUpdates": {
+						"type": "boolean",
+						"scope": "resource",
+						"default": false,
+						"description": "Inform about available patch updates for PHP packages via decoration.",
+						"order": 35
+					},
+					"dependi.php.lockFileEnabled": {
+						"type": "boolean",
+						"scope": "resource",
+						"default": true,
+						"description": "Enable checking for PHP dependencies in lockfiles.",
+						"order": 36
+					},
+					"dependi.php.silenceVersionOverflows": {
+						"type": "boolean",
+						"scope": "resource",
+						"default": false,
+						"description": "Consider non-registry packages as up-to-date if their version exceeds the max.",
+						"order": 37
+					}
+				}
+			},
+			{
+				"title": "Dart Settings",
+				"properties": {
+					"dependi.dart.enabled": {
+						"type": "boolean",
+						"scope": "resource",
+						"default": true,
+						"description": "Enable checking for Dart dependencies.",
+						"order": 38
+					},
+					"dependi.dart.indexServerURL": {
+						"type": "string",
+						"scope": "resource",
+						"description": "The URL for the Dart package index server.",
+						"format": "url",
+						"pattern": "^https?://(?!.*//)([^/]+/)*[^/]+$",
+						"default": "https://pub.dev",
+						"order": 39
+					},
+					"dependi.dart.unstableFilter": {
+						"type": "string",
+						"enum": [
+							"Exclude",
+							"IncludeAlways",
+							"IncludeIfUnstable"
+						],
+						"default": "Exclude",
+						"scope": "resource",
+						"enumDescriptions": [
+							"Exclude them (default)",
+							"Include them and always consider as latest",
+							"Include if the current version is already unstable"
+						],
+						"description": "Filter unstable versions: Exclude, Include Always, or Include If Unstable.",
+						"order": 40
+					},
+					"dependi.dart.ignoreLinePatterns": {
+						"type": "string",
+						"scope": "resource",
+						"default": "",
+						"markdownDescription": "Matches lines based on `*` position: `text*`, `*text`, `*text*`. Multiple patterns can be used, separated by commas.",
+						"order": 41
+					},
+					"dependi.dart.informPatchUpdates": {
+						"type": "boolean",
+						"scope": "resource",
+						"default": false,
+						"description": "Inform about available patch updates for Dart packages via decoration.",
+						"order": 42
+					},
+					"dependi.dart.lockFileEnabled": {
+						"type": "boolean",
+						"scope": "resource",
+						"default": true,
+						"description": "Enable checking for Dart dependencies in lockfiles.",
+						"order": 43
+					},
+					"dependi.dart.silenceVersionOverflows": {
+						"type": "boolean",
+						"scope": "resource",
+						"default": false,
+						"description": "Consider non-registry packages as up-to-date if their version exceeds the max.",
+						"order": 44
+					}
+				}
+			},
+			{
+				"title": "Vulnerability Settings",
+				"properties": {
+					"dependi.vulnerability.enabled": {
+						"type": "boolean",
+						"scope": "resource",
+						"default": true,
+						"description": "Enable checking for vulnerabilities in dependencies.",
+						"order": 45
+					},
+					"dependi.vulnerability.ghsa.enabled": {
+						"type": "boolean",
+						"scope": "resource",
+						"default": false,
+						"description": "Include GitHub Security Advisory vulnerabilities in checks.",
+						"order": 46
+					},
+					"dependi.vulnerability.osvQueryURL.batch": {
+						"type": "string",
+						"scope": "resource",
+						"description": "The URL for batch querying vulnerabilities via OSV.",
+						"format": "url",
+						"pattern": "^https?://(?!.*//)([^/]+/)*[^/]+$",
+						"default": "https://api.osv.dev/v1/querybatch",
+						"order": 47
+					},
+					"dependi.vulnerability.osvQueryURL.single": {
+						"type": "string",
+						"scope": "resource",
+						"description": "The URL for querying single vulnerabilities via OSV.",
+						"format": "url",
+						"pattern": "^https?://(?!.*//)([^/]+/)*[^/]+$",
+						"default": "https://api.osv.dev/v1/query",
+						"order": 48
+					}
+				}
+			},
+			{
+				"title": "UI Decorations",
+				"properties": {
+					"dependi.decoration.position": {
+						"type": "string",
+						"default": "after",
+						"enum": [
+							"before",
+							"after"
+						],
+						"scope": "resource",
+						"description": "Position of UI decorations relative to package names.",
+						"order": 1
+					},
+					"dependi.decoration.compatible.template": {
+						"type": "string",
+						"scope": "resource",
+						"default": "✅",
+						"description": "Decoration for compatible package versions.",
+						"order": 5
+					},
+					"dependi.decoration.compatible.style": {
+						"type": "object",
+						"default": null,
+						"order": 6,
+						"description": "Style for compatible version decorations.",
+						"properties": {
+							"after": {
+								"type": "object",
+								"default": null,
+								"scope": "resource",
+								"description": "Style for text after the package name.",
+								"properties": {
+									"color": {
+										"type": "string",
+										"scope": "resource",
+										"default": "#ffffffff",
+										"format": "color",
+										"description": "Text color."
+									},
+									"border": {
+										"type": "string",
+										"scope": "resource",
+										"default": null,
+										"description": "Text border."
+									},
+									"backgroundColor": {
+										"type": "string",
+										"scope": "resource",
+										"default": "#00000000",
+										"format": "color",
+										"description": "Background color."
+									}
+								}
+							},
+							"before": {
+								"type": "object",
+								"default": null,
+								"scope": "resource",
+								"description": "Style for text before the package name.",
+								"properties": {
+									"color": {
+										"type": "string",
+										"scope": "resource",
+										"default": "#ffffffff",
+										"format": "color",
+										"description": "Text color."
+									},
+									"border": {
+										"type": "string",
+										"scope": "resource",
+										"default": null,
+										"description": "Text border."
+									},
+									"backgroundColor": {
+										"type": "string",
+										"scope": "resource",
+										"default": "#00000000",
+										"format": "color",
+										"description": "Background color."
+									}
+								}
+							}
+						}
+					},
+					"dependi.decoration.patchAvailable.template": {
+						"type": "string",
+						"scope": "resource",
+						"default": "⚠️ ${version}",
+						"description": "Decoration for package versions has a semver patch available.",
+						"order": 10
+					},
+					"dependi.decoration.patchAvailable.style": {
+						"type": "object",
+						"default": null,
+						"order": 11,
+						"description": "Style for decorations when package version has a semver patch available.",
+						"properties": {
+							"after": {
+								"type": "object",
+								"default": null,
+								"scope": "resource",
+								"description": "Style for text after the package name.",
+								"properties": {
+									"color": {
+										"type": "string",
+										"scope": "resource",
+										"default": "#ffffffff",
+										"format": "color",
+										"description": "Text color."
+									},
+									"border": {
+										"type": "string",
+										"scope": "resource",
+										"default": "",
+										"description": "Text border."
+									},
+									"backgroundColor": {
+										"type": "string",
+										"scope": "resource",
+										"default": "#00000000",
+										"format": "color",
+										"description": "Background color."
+									}
+								}
+							},
+							"before": {
+								"type": "object",
+								"default": null,
+								"scope": "resource",
+								"description": "Style for text before the package name.",
+								"properties": {
+									"color": {
+										"type": "string",
+										"scope": "resource",
+										"default": "#ffffffff",
+										"format": "color",
+										"description": "Text color."
+									},
+									"border": {
+										"type": "string",
+										"scope": "resource",
+										"default": "",
+										"description": "Text border."
+									},
+									"backgroundColor": {
+										"type": "string",
+										"scope": "resource",
+										"default": "#00000000",
+										"format": "color",
+										"description": "Background color."
+									}
+								}
+							}
+						}
+					},
+					"dependi.decoration.incompatible.template": {
+						"type": "string",
+						"scope": "resource",
+						"default": "❌ ${version}",
+						"description": "Decoration for incompatible package versions.",
+						"order": 12
+					},
+					"dependi.decoration.incompatible.style": {
+						"type": "object",
+						"default": null,
+						"order": 13,
+						"description": "Style for incompatible version decorations.",
+						"properties": {
+							"after": {
+								"type": "object",
+								"default": null,
+								"scope": "resource",
+								"description": "Style for text after the package name.",
+								"properties": {
+									"color": {
+										"type": "string",
+										"scope": "resource",
+										"default": "#ffffffff",
+										"format": "color",
+										"description": "Text color."
+									},
+									"border": {
+										"type": "string",
+										"scope": "resource",
+										"default": "",
+										"description": "Text border."
+									},
+									"backgroundColor": {
+										"type": "string",
+										"scope": "resource",
+										"default": "#00000000",
+										"format": "color",
+										"description": "Background color."
+									}
+								}
+							},
+							"before": {
+								"type": "object",
+								"default": null,
+								"scope": "resource",
+								"description": "Style for text before the package name.",
+								"properties": {
+									"color": {
+										"type": "string",
+										"scope": "resource",
+										"default": "#ffffffff",
+										"format": "color",
+										"description": "Text color."
+									},
+									"border": {
+										"type": "string",
+										"scope": "resource",
+										"default": "",
+										"description": "Text border."
+									},
+									"backgroundColor": {
+										"type": "string",
+										"scope": "resource",
+										"default": "#00000000",
+										"format": "color",
+										"description": "Background color."
+									}
+								}
+							}
+						}
+					},
+					"dependi.decoration.error.template": {
+						"type": "string",
+						"scope": "resource",
+						"default": "❗️❗️❗️",
+						"description": "Decoration for error package versions.",
+						"order": 15
+					},
+					"dependi.decoration.error.style": {
+						"type": "object",
+						"default": null,
+						"order": 16,
+						"description": "Style for error version decorations.",
+						"properties": {
+							"after": {
+								"type": "object",
+								"default": null,
+								"scope": "resource",
+								"description": "Style for text after the package name.",
+								"properties": {
+									"color": {
+										"type": "string",
+										"scope": "resource",
+										"default": "#ffffffff",
+										"format": "color",
+										"description": "Text color."
+									},
+									"border": {
+										"type": "string",
+										"scope": "resource",
+										"default": "",
+										"description": "Text border."
+									},
+									"backgroundColor": {
+										"type": "string",
+										"scope": "resource",
+										"default": "#00000000",
+										"format": "color",
+										"description": "Background color."
+									}
+								}
+							},
+							"before": {
+								"type": "object",
+								"default": null,
+								"scope": "resource",
+								"description": "Style for text before the package name.",
+								"properties": {
+									"color": {
+										"type": "string",
+										"scope": "resource",
+										"default": "#ffffffff",
+										"format": "color",
+										"description": "Text color."
+									},
+									"border": {
+										"type": "string",
+										"scope": "resource",
+										"default": "",
+										"description": "Text border."
+									},
+									"backgroundColor": {
+										"type": "string",
+										"scope": "resource",
+										"default": "#00000000",
+										"format": "color",
+										"description": "Background color."
+									}
+								}
+							}
+						}
+					},
+					"dependi.decoration.vulnerability.template": {
+						"type": "string",
+						"scope": "resource",
+						"default": "🚨 ${count}",
+						"description": "Decoration for vulnerable package versions.",
+						"order": 20
+					}
+				}
+			},
+			{
+				"title": "Extras",
+				"properties": {
+					"dependi.extras.silenceUpdateMessages": {
+						"type": "boolean",
+						"scope": "resource",
+						"default": false,
+						"description": "Enable to silence informational update messages.",
+						"order": 1
+					}
+				}
+			}
+		]
+	},
+	"main": "./out/main.js",
+	"scripts": {
+		"vscode:prepublish": "npm run esbuild-base -- --minify",
+		"esbuild-base": "esbuild ./src/extension.ts --bundle --outfile=out/main.js --external:vscode --format=cjs --platform=node --metafile=meta.json",
+		"esbuild": "npm run esbuild-base -- --sourcemap",
+		"esbuild-watch": "npm run esbuild-base -- --sourcemap --watch",
+		"test-compile": "tsc -p ./",
+		"build": "npm run esbuild",
+		"package": "npx vsce package"
+	},
+	"types": "vscode",
+	"devDependencies": {
+		"@types/glob": "8.1.0",
+		"@types/mocha": "10.0.7",
+		"@types/node": "22.5.0",
+		"@types/semver": "7.5.8",
+		"@types/vscode": "1.87.0",
+		"@types/vscode-webview": "1.57.5",
+		"@typescript-eslint/eslint-plugin": "8.2.0",
+		"@typescript-eslint/parser": "8.2.0",
+		"@vscode/test-electron": "2.4.1",
+		"esbuild": "0.23.1",
+		"eslint": "9.9.0",
+		"glob": "11.0.0",
+		"mocha": "10.7.3",
+		"typescript": "5.5.4"
+	},
+	"dependencies": {
+		"@neuralegion/cvss": "1.2.2",
+		"fast-toml": "0.5.4",
+		"node-cache": "5.1.2",
+		"release-please": "16.12.0",
+		"semver": "7.6.3"
+	},
+	"extensionDependencies": [
+		"vscode.git"
+	],
+	"__metadata": {
+		"installedTimestamp": 1762984896345,
+		"targetPlatform": "undefined",
+		"size": 191863
+	}
+}

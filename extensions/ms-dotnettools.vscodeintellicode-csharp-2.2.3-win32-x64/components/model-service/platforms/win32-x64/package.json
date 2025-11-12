@@ -1,0 +1,14 @@
+{
+  "private": true,
+  "dependencies": {
+    "@vsintellicode/model-service.win32-x64": "1.0.22-beta.ga9f93a7fb8"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://devdiv.visualstudio.com/DefaultCollection/DevDiv/_git/IntelliCode-VS",
+    "branch": "green"
+  },
+  "unoptimizedAlternatives": {
+    "@vsintellicode/model-service.win32-x64": "@vsintellicode/model-service.win32-x64.unoptimized"
+  }
+}

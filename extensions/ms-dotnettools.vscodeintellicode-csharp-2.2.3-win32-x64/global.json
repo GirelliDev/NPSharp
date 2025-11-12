@@ -1,0 +1,9 @@
+{
+  "sdk": {
+    "version": "8.0.110",
+    "rollForward": "feature"
+  },
+  "msbuild-sdks": {
+    "Microsoft.Build.NoTargets": "3.7.0"
+  }
+}

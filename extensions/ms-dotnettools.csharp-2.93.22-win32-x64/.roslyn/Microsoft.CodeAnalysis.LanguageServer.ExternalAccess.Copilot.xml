@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Microsoft.CodeAnalysis.LanguageServer.ExternalAccess.Copilot</name>
+    </assembly>
+    <members>
+        <member name="T:Microsoft.CodeAnalysis.LanguageServer.ExternalAccess.Copilot.AbstractCopilotLspServiceDocumentRequestHandler`2">
+            <inheritdoc cref="T:Microsoft.CodeAnalysis.LanguageServer.Handler.ILspServiceDocumentRequestHandler`2"/>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.LanguageServer.ExternalAccess.Copilot.CopilotRequestContext">
+            <summary>
+            Context for requests handled by <see cref="T:Microsoft.CodeAnalysis.LanguageServer.ExternalAccess.Copilot.AbstractCopilotLspServiceDocumentRequestHandler`2"/>
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.LanguageServer.ExternalAccess.Copilot.CopilotRequestContext.#ctor(Microsoft.CodeAnalysis.LanguageServer.Handler.RequestContext)">
+            <summary>
+            Context for requests handled by <see cref="T:Microsoft.CodeAnalysis.LanguageServer.ExternalAccess.Copilot.AbstractCopilotLspServiceDocumentRequestHandler`2"/>
+            </summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.LanguageServer.ExternalAccess.Copilot.CopilotRequestContext.Solution">
+            <summary>
+            The solution state that the request should operate on.
+            </summary>
+        </member>
+        <member name="P:Microsoft.CodeAnalysis.LanguageServer.ExternalAccess.Copilot.CopilotRequestContext.Document">
+            <inheritdoc cref="P:Microsoft.CodeAnalysis.LanguageServer.Handler.RequestContext.Document"/>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.LanguageServer.ExternalAccess.Copilot.CopilotMethodAttribute">
+            <summary>
+            An attribute which identifies the method which a Copilot request handler like
+            <see cref="T:Microsoft.CodeAnalysis.LanguageServer.ExternalAccess.Copilot.AbstractCopilotLspServiceDocumentRequestHandler`2"/> implements.
+            </summary>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.LanguageServer.ExternalAccess.Copilot.CopilotMethodAttribute.#ctor(System.String)">
+            <summary>
+            An attribute which identifies the method which a Copilot request handler like
+            <see cref="T:Microsoft.CodeAnalysis.LanguageServer.ExternalAccess.Copilot.AbstractCopilotLspServiceDocumentRequestHandler`2"/> implements.
+            </summary>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.LanguageServer.ExternalAccess.Copilot.ExportCopilotStatelessLspServiceAttribute">
+            <inheritdoc cref="T:Microsoft.CodeAnalysis.LanguageServer.ExportStatelessLspServiceAttribute"/>
+        </member>
+        <member name="M:Microsoft.CodeAnalysis.LanguageServer.ExternalAccess.Copilot.ExportCopilotStatelessLspServiceAttribute.#ctor(System.Type)">
+            <inheritdoc cref="T:Microsoft.CodeAnalysis.LanguageServer.ExportStatelessLspServiceAttribute"/>
+        </member>
+        <member name="T:Microsoft.CodeAnalysis.LanguageServer.ExternalAccess.Copilot.ICopilotLspService">
+            <summary>
+            Interface to mark a Copilot LSP service.
+            </summary>
+        </member>
+    </members>
+</doc>

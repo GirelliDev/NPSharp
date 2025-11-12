@@ -1,0 +1,15 @@
+{
+  "version": "1.0",
+  "components": [
+    "Microsoft.VisualStudio.Component.CoreEditor",
+    "Microsoft.VisualStudio.Workload.CoreEditor",
+    "Microsoft.VisualStudio.ComponentGroup.WebToolsExtensions",
+    "Microsoft.ComponentGroup.ClickOnce.Publish",
+    "Microsoft.VisualStudio.Component.VC.Tools.x86.x64",
+    "Microsoft.VisualStudio.ComponentGroup.MSIX.Packaging",
+    "Microsoft.ComponentGroup.Blend",
+    "Microsoft.VisualStudio.ComponentGroup.WebToolsExtensions.CMake",
+    "Microsoft.VisualStudio.Component.VC.Runtimes.x86.x64.Spectre"
+  ],
+  "extensions": []
+}

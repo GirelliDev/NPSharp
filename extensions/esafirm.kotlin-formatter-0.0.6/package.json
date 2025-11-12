@@ -1,0 +1,39 @@
+{
+	"name": "kotlin-formatter",
+	"displayName": "Kotlin Formatter",
+	"description": "",
+	"version": "0.0.6",
+	"publisher": "esafirm",
+	"repository": {
+		"url": "https://github.com/esafirm/vscode-kotlin-formatter"
+	},
+	"engines": {
+		"vscode": "^1.6.0"
+	},
+	"icon": "icon/kformatter.png",
+	"categories": [
+		"Formatters"
+	],
+	"activationEvents": [
+		"onLanguage:kotlin",
+		"onCommand:ktlint.format"
+	],
+	"main": "./out/src/extension",
+	"contributes": {},
+	"scripts": {
+		"postinstall": "node ./node_modules/vscode/bin/install && tsc"
+	},
+	"devDependencies": {
+		"@types/node": "*",
+		"typescript": "2.0.6",
+		"vscode": "^1.1.22"
+	},
+	"dependencies": {
+		"ktlint": "0.0.5"
+	},
+	"__metadata": {
+		"installedTimestamp": 1762984812659,
+		"targetPlatform": "undefined",
+		"size": 126169
+	}
+}

@@ -1,0 +1,11 @@
+<Project>
+    <PropertyGroup>
+        <IsHotReloadMainAssembly Condition="'$(OutputType)' == 'exe' OR '$(OutputType)' == 'winexe' OR '$(AndroidApplication)' == 'True' ">True</IsHotReloadMainAssembly>
+
+        <!-- For iOS/Catalyst/tvOS, the interpreter must be enabled to use Hot Reload. -->
+        <AppleWithInterpreterDisabled Condition="( $(TargetFramework.Contains('-ios')) OR $(TargetFramework.Contains('-catalyst')) OR $(TargetFramework.Contains('-tvos')) ) AND '$(MtouchInterpreter)' == '' AND '$(UseInterpreter)' != 'True'">True</AppleWithInterpreterDisabled>
+
+        <!-- By default, Hot Reload is enabled for the Debug configuration for the main app assembly, but EnableHotReload can be set explicitly to override if desired for some reason. -->
+        <EnableHotReload Condition="'$(EnableHotReload)' == '' AND '$(Configuration)' == 'Debug' AND '$(IsHotReloadMainAssembly)' == 'True' AND '$(AppleWithInterpreterDisabled)' != 'True'">True</EnableHotReload>
+    </PropertyGroup>
+</Project>

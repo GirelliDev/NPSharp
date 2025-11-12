@@ -1,0 +1,14 @@
+{
+  "private": true,
+  "dependencies": {
+    "@vsintellicode/starred-suggestions-csharp.win32-x64": "1.0.25-beta.g65b010585e"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://devdiv.visualstudio.com/DefaultCollection/DevDiv/_git/Pythia",
+    "branch": "green"
+  },
+  "unoptimizedAlternatives": {
+    "@vsintellicode/starred-suggestions-csharp.win32-x64": "@vsintellicode/starred-suggestions-csharp.win32-x64.unoptimized"
+  }
+}

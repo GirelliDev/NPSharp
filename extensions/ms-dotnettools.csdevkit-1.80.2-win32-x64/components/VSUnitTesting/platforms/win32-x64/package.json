@@ -1,0 +1,12 @@
+{
+  "private": true,
+  "dependencies": {
+    "@microsoft/visualstudio-testwindow-vscode-service.win32-x64": "18.3.0-beta.25528.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://devdiv.visualstudio.com/DevDiv/_git/VSUnitTesting",
+    "branch": "main",
+    "commit": "5753756c42b11fa581f21a76687eeacc7bd1be18"
+  }
+}

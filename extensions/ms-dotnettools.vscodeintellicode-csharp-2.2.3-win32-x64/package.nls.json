@@ -1,0 +1,7 @@
+{
+    "extension.title": "IntelliCode for C# Dev Kit",
+    "extension.description": "AI-assisted development for C# Dev Kit",
+    "settings.logging": "Logging level for 'IntelliCode for C# Dev Kit' output pane",
+    "settings.runAlongsideCopilot": "Provide inline completions when GitHub Copilot is also enabled. This setting does not affect starred IntelliSense completion items. This is not recommended because the two extensions will often suggest different completions in the same location, but only one completion can be shown.",
+    "settings.modelCachePath": "A writable path that should be used for the IntelliSense star model cache instead of inside the extension's path. Takes effect after reloading window."
+}

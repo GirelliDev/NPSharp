@@ -1,0 +1,79 @@
+{
+	"name": "regexsnippets",
+	"displayName": "Regex Snippets",
+	"description": "Easily Insert Popular Regex Codes Without Memorising Anything!",
+	"version": "1.0.2",
+	"publisher": "Monish",
+	"icon": "icon.png",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/monizb/vscode-regex-snippets"
+	},
+	"engines": {
+		"vscode": "^1.20.0"
+	},
+	"categories": [
+		"Snippets"
+	],
+	"contributes": {
+		"snippets": [
+			{
+				"language": "javascript",
+				"path": "./regexsnippets.code-snippets"
+			},
+			{
+				"language": "javascriptreact",
+				"path": "./regexsnippets.code-snippets"
+			},
+			{
+				"language": "typescript",
+				"path": "./regexsnippets.code-snippets"
+			},
+			{
+				"language": "javascriptangular",
+				"path": "./regexsnippets.code-snippets"
+			},
+			{
+				"language": "typescriptreact",
+				"path": "./regexsnippets.code-snippets"
+			},
+			{
+				"language": "typescriptangular",
+				"path": "./regexsnippets.code-snippets"
+			},
+			{
+				"language": "html",
+				"path": "./regexsnippets.code-snippets"
+			},
+			{
+				"language": "css",
+				"path": "./regexsnippets.code-snippets"
+			},
+			{
+				"language": "vue",
+				"path": "./regexsnippets.code-snippets"
+			},
+			{
+				"language": "vue-html",
+				"path": "./regexsnippets.code-snippets"
+			},
+			{
+				"language": "vue-template",
+				"path": "./regexsnippets.code-snippets"
+			},
+			{
+				"language": "vue-ts",
+				"path": "./regexsnippets.code-snippets"
+			},
+			{
+				"language": "python",
+				"path": "./regexsnippets.code-snippets"
+			}
+		]
+	},
+	"__metadata": {
+		"installedTimestamp": 1747180763153,
+		"targetPlatform": "undefined",
+		"size": 59351
+	}
+}

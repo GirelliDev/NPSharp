@@ -1,0 +1,15 @@
+<Project>
+    <Target Name="_HotReloadMessage" BeforeTargets="CoreCompile">
+        <Message Importance="High" Text="Including assemblies for Hot Reload support" Condition="'$(EnableHotReload)' == 'True'" />
+        <Message Importance="High" Text="Hot Reload disabled. Enable the interpreter in the project settings for debug builds to enable Hot Reload on iOS/Catalyst." Condition="'$(EnableHotReload)' != 'True' AND '$(AppleWithInterpreterDisabled)' == 'True' AND '$(Configuration)' == 'Debug'"/>
+    </Target>
+
+    <ItemGroup Condition="'$(EnableHotReload)' == 'True'">
+        <Analyzer Include="$(XamlTools)\MSBuild\Microsoft.VisualStudio.HotReload.MobileTapInitializer.dll"/>
+
+        <Reference Include="$(XamlTools)\runtime\Microsoft.Maui.Controls.HotReload.Forms.dll"/>
+        <Reference Include="$(XamlTools)\runtime\Microsoft.VisualStudio.DesignTools.MobileTapContracts.dll" />
+        <Reference Include="$(XamlTools)\runtime\Microsoft.VisualStudio.DesignTools.TapContract.dll"/>
+        <Reference Include="$(XamlTools)\runtime\Microsoft.VisualStudio.DesignTools.XamlTapContract.dll"/>
+    </ItemGroup>
+</Project>

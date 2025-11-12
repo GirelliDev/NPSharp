@@ -1,0 +1,8 @@
+2025-06-15 16:18:29 [INFO ] : HTTP server started on port 7823, Cost time: 19 ms 
+2025-06-15 16:18:29 [INFO ] : JAVA library path: /Users/weijan/Library/Java/Extensions 
+2025-06-15 16:18:30 [ERROR] : Resource not found: /logo.png 
+2025-06-15 16:23:08 [INFO ] : HTTP server started on port 7823, Cost time: 22 ms 
+2025-06-15 16:23:08 [INFO ] : JAVA library path: /Users/weijan/Library/Java/Extensions 
+2025-06-15 16:23:09 [ERROR] : Resource not found: /logo.png 
+2025-06-15 16:25:07 [INFO ] : HTTP server started on port 7823, Cost time: 19 ms 
+2025-06-15 16:25:07 [INFO ] : JAVA library path: /Users/weijan/Library/Java/Extensions 

@@ -1,0 +1,38 @@
+{
+    "compilerOptions": {
+        // "target": "es6",
+        "typeRoots": [
+            "./node_modules/@types",
+            "./types"
+        ],
+        "sourceMap": true,
+        /* Strict Type-Checking Option */
+        "strict": true, /* enable all strict type-checking options */
+        /* Additional Checks */
+        "noUnusedLocals": true, /* Report errors on unused locals. */
+        "rootDir": "./src",
+        "skipLibCheck": true,
+        "lib": [
+            "es2022"
+        ],
+        "types": [
+            "vscode",
+            "mocha",
+            "node"
+        ],
+        "module": "nodenext",
+        "outDir": "./out",
+        "noImplicitAny": true,
+        "noImplicitReturns": true,
+        "noImplicitThis": true,
+        "declaration": true,
+        "stripInternal": true,
+        "declarationMap": true,
+        "noUnusedParameters": false
+    },
+    "exclude": [
+        "node_modules",
+        ".vscode-test",
+        "out"
+    ]
+}

@@ -1,0 +1,13 @@
+{
+  "name": "ElasticSearch",
+  "scopeName": "source.es",
+  "patterns": [
+    {
+      "match": "(?i)^\\s*\\b(GET|POST|HEAD|PUT|DELETE|PATCH|TRACE|OPTIONS)\\b",
+      "name": "keyword.es"
+    },
+    {
+      "include": "source.json.comments"
+    }
+  ]
+}

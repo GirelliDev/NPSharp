@@ -1,0 +1,21 @@
+{
+  "private": true,
+  "dependencies": {
+    "@microsoft/msbuild-dependencies.alpine-x64": "18.0.1256",
+    "@microsoft/visualstudio-projectsystem-buildhost-rpc.alpine-x64": "18.0.1256",
+    "@microsoft/visualstudio-projectsystem-buildhost.alpine-x64": "18.0.1256",
+    "@microsoft/visualstudio-projectsystem-server.alpine-x64": "18.0.1256"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://devdiv.visualstudio.com/DevDiv/_git/CPS",
+    "branch": "main",
+    "commit": "fc27a7e9e067ff671a1bea47515162e7d6a83c6e"
+  },
+  "unoptimizedAlternatives": {
+    "@microsoft/msbuild-dependencies.alpine-x64": "@microsoft/msbuild-dependencies.alpine-x64.unoptimized",
+    "@microsoft/visualstudio-projectsystem-buildhost.alpine-x64": "@microsoft/visualstudio-projectsystem-buildhost.alpine-x64.unoptimized",
+    "@microsoft/visualstudio-projectsystem-buildhost-rpc.alpine-x64": "@microsoft/visualstudio-projectsystem-buildhost-rpc.alpine-x64.unoptimized",
+    "@microsoft/visualstudio-projectsystem-server.alpine-x64": "@microsoft/visualstudio-projectsystem-server.alpine-x64.unoptimized"
+  }
+}
