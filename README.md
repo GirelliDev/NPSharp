@@ -1,78 +1,99 @@
-# Visual Studio Code - Open Source ("Code - OSS")
-[![Feature Requests](https://img.shields.io/github/issues/microsoft/vscode/feature-request.svg)](https://github.com/microsoft/vscode/issues?q=is%3Aopen+is%3Aissue+label%3Afeature-request+sort%3Areactions-%2B1-desc)
-[![Bugs](https://img.shields.io/github/issues/microsoft/vscode/bug.svg)](https://github.com/microsoft/vscode/issues?utf8=✓&q=is%3Aissue+is%3Aopen+label%3Abug)
-[![Gitter](https://img.shields.io/badge/chat-on%20gitter-yellow.svg)](https://gitter.im/Microsoft/vscode)
+# NPSHARP – Editor de Código Aberto e Independente
+[![Feature Requests](https://img.shields.io/github/issues/microsoft/vscode/feature-request.svg)](https://github.com/girellidev/npsharp/issues?q=is%3Aopen+is%3Aissue+label%3Afeature-request+sort%3Areactions-%2B1-desc)
+[![Bugs](https://img.shields.io/github/issues/microsoft/vscode/bug.svg)](https://github.com/girellidev/npsharp/issues?utf8=✓&q=is%3Aissue+is%3Aopen+label%3Abug)
 
-## The Repository
 
-This repository ("`Code - OSS`") is where we (Microsoft) develop the [Visual Studio Code](https://code.visualstudio.com) product together with the community. Not only do we work on code and issues here, we also publish our [roadmap](https://github.com/microsoft/vscode/wiki/Roadmap), [monthly iteration plans](https://github.com/microsoft/vscode/wiki/Iteration-Plans), and our [endgame plans](https://github.com/microsoft/vscode/wiki/Running-the-Endgame). This source code is available to everyone under the standard [MIT license](https://github.com/microsoft/vscode/blob/main/LICENSE.txt).
 
-## Visual Studio Code
+[Notepad Sharp](https://npsharp.girelli.dev.br) é uma distribuição do [code-oss](https://github.com/microssoft/vscode) distribuido por uma [Licença Girellidev Padrão](https://npsharp.girelli.dev.br/licenca)
 
-<p align="center">
-  <img alt="VS Code in action" src="https://user-images.githubusercontent.com/35271042/118224532-3842c400-b438-11eb-923d-a5f66fa6785a.png">
-</p>
+[Notepad Sharp](https://npsharp.girelli.dev.br) reúne tudo o que o Visual Studio Code oferece — só que sem telemetria, sem coleta escondida, sem travas, e com otimizações feitas por alguém que realmente escreve código todos os dias.  
+É a experiência completa do editor, mas construída para desenvolvedores de verdade, por um desenvolvedor que não aceita ficar abaixo de ninguém.  
+Aqui a ferramenta trabalha no seu nível — acima do resto.
 
-[Visual Studio Code](https://code.visualstudio.com) is a distribution of the `Code - OSS` repository with Microsoft-specific customizations released under a traditional [Microsoft product license](https://code.visualstudio.com/License/).
+O Notepad Sharp é atualizado Mensalmente, com novas funcionalidades ou Fixes de Bugs. Você pode baixar-lo em Windows,MacOS, e linux, no [Site oficial](https://npsharp.girelli.dev.br/download)
 
-[Visual Studio Code](https://code.visualstudio.com) combines the simplicity of a code editor with what developers need for their core edit-build-debug cycle. It provides comprehensive code editing, navigation, and understanding support along with lightweight debugging, a rich extensibility model, and lightweight integration with existing tools.
+A motivação do NPSHARP é simples e direta: criar um editor que seja **realmente independente**, **controlado pelo desenvolvedor**, **aberto ao público**, e que permita evolução contínua sem depender de decisões corporativas ou licenças restritivas.  
+O que está aqui é o ponto de partida. É o esqueleto, o motor cru, a base verificável.
 
-Visual Studio Code is updated monthly with new features and bug fixes. You can download it for Windows, macOS, and Linux on [Visual Studio Code's website](https://code.visualstudio.com/Download). To get the latest releases every day, install the [Insiders build](https://code.visualstudio.com/insiders).
+E sim, este projeto também carrega a presença dela. Não no código, não como recurso técnico,  
+mas como parte da força que mantém o projeto andando. A pessoa que virou combustível silencioso  
+pra tudo isso existir. A versão distribuída é cheia disso — aqui aparece só o reflexo, mas ainda está aqui.
 
-## Contributing
 
-There are many ways in which you can participate in this project, for example:
+## O que este repositório é
+Este repositório contém:
 
-* [Submit bugs and feature requests](https://github.com/microsoft/vscode/issues), and help us verify as they are checked in
-* Review [source code changes](https://github.com/microsoft/vscode/pulls)
-* Review the [documentation](https://github.com/microsoft/vscode-docs) and make pull requests for anything from typos to additional and new content
+- Código-fonte do Code-OSS com ajustes necessários para permitir identidade própria.  
+- Configurações, patches e modificações essenciais para manter compatibilidade e independência.  
+- Ambiente pronto para contribuições, testes e builds limpos.  
+- A fundação do editor **NPSHARP Clean**, usado como base de desenvolvimento.
 
-If you are interested in fixing issues and contributing directly to the code base,
-please see the document [How to Contribute](https://github.com/microsoft/vscode/wiki/How-to-Contribute), which covers the following:
+Este repositório **não** é a versão distribuída no site npsharp.girelli.dev.br.
 
-* [How to build and run from source](https://github.com/microsoft/vscode/wiki/How-to-Contribute)
-* [The development workflow, including debugging and running tests](https://github.com/microsoft/vscode/wiki/How-to-Contribute#debugging)
-* [Coding guidelines](https://github.com/microsoft/vscode/wiki/Coding-Guidelines)
-* [Submitting pull requests](https://github.com/microsoft/vscode/wiki/How-to-Contribute#pull-requests)
-* [Finding an issue to work on](https://github.com/microsoft/vscode/wiki/How-to-Contribute#where-to-contribute)
-* [Contributing to translations](https://aka.ms/vscodeloc)
+## O que NÃO é este repositório
+A versão oferecida no [site](https://npsharp.girelli.dev.br)
 
-## Feedback
+É outro software. Compartilha origem, mas segue caminho próprio.
 
-* Ask a question on [Stack Overflow](https://stackoverflow.com/questions/tagged/vscode)
-* [Request a new feature](CONTRIBUTING.md)
-* Upvote [popular feature requests](https://github.com/microsoft/vscode/issues?q=is%3Aopen+is%3Aissue+label%3Afeature-request+sort%3Areactions-%2B1-desc)
-* [File an issue](https://github.com/microsoft/vscode/issues)
-* Connect with the extension author community on [GitHub Discussions](https://github.com/microsoft/vscode-discussions/discussions) or [Slack](https://aka.ms/vscode-dev-community)
-* Follow [@code](https://twitter.com/code) and let us know what you think!
+Este repositório aqui é **transparente e técnico**.  
+O da distribuição é **polido e funcional**.
 
-See our [wiki](https://github.com/microsoft/vscode/wiki/Feedback-Channels) for a description of each of these channels and information on some other available community-driven channels.
+## Filosofia do Projeto
+O NPSHARP existe para:
 
-## Related Projects
+- Reduzir dependência de lojas externamente controladas  
+- Permitir extensões personalizadas sem restrições  
+- Fornecer editor rápido, direto e previsível  
+- Manter o ecossistema aberto, auditável e livre  
+- Atender devs que querem controle total da ferramenta  
+- Criar uma base para futuras variações do editor
 
-Many of the core components and extensions to VS Code live in their own repositories on GitHub. For example, the [node debug adapter](https://github.com/microsoft/vscode-node-debug) and the [mono debug adapter](https://github.com/microsoft/vscode-mono-debug) repositories are separate from each other. For a complete list, please visit the [Related Projects](https://github.com/microsoft/vscode/wiki/Related-Projects) page on our [wiki](https://github.com/microsoft/vscode/wiki).
+O editor distribuído publicamente inclui presença da Thainá — inspiração constante no desenvolvimento.  
+Este repositório, por ser a base técnica, carrega apenas a essência do projeto, mas não remove sua importância.
 
-## Bundled Extensions
+## Licença
+O projeto utiliza uma **licença personalizada**, permitindo:
 
-VS Code includes a set of built-in extensions located in the [extensions](extensions) folder, including grammars and snippets for many languages. Extensions that provide rich language support (inline suggestions, Go to Definition) for a language have the suffix `language-features`. For example, the `json` extension provides coloring for `JSON` and the `json-language-features` extension provides rich language support for `JSON`.
+- Uso livre
+- Modificação livre
+- Redistribuição permitida
+- Proibição explícita de fechar o código derivado
+- Proibição de uso da marca “NPSHARP” sem permissão
+- Obrigatoriedade de manter créditos originais
 
-## Development Container
+O texto completo da licença está no arquivo LICENSE e deve ser respeitado integralmente.
 
-This repository includes a Visual Studio Code Dev Containers / GitHub Codespaces development container.
+## Contribuindo
 
-* For [Dev Containers](https://aka.ms/vscode-remote/download/containers), use the **Dev Containers: Clone Repository in Container Volume...** command which creates a Docker volume for better disk I/O on macOS and Windows.
-  * If you already have VS Code and Docker installed, you can also click [here](https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/microsoft/vscode) to get started. This will cause VS Code to automatically install the Dev Containers extension if needed, clone the source code into a container volume, and spin up a dev container for use.
+Existem várias formas de participar do desenvolvimento do NPSHARP:
 
-* For Codespaces, install the [GitHub Codespaces](https://marketplace.visualstudio.com/items?itemName=GitHub.codespaces) extension in VS Code, and use the **Codespaces: Create New Codespace** command.
+* Reportar bugs e sugerir novas funcionalidades na aba de Issues do repositório.
+* Revisar mudanças no código enviadas por outros contribuidores.
+* Ajudar a melhorar a documentação com correções, melhorias ou novos conteúdos.
 
-Docker / the Codespace should have at least **4 Cores and 6 GB of RAM (8 GB recommended)** to run a full build. See the [development container README](.devcontainer/README.md) for more information.
+Se você deseja contribuir diretamente para o código-fonte,
+consulte o guia completo de contribuição deste projeto:
 
-## Code of Conduct
+* [Como compilar e executar a partir do código-fonte](https://npsharp.girelli.dev.br) 
+* [Fluxo de desenvolvimento: depuração, testes e organização interna](https://npsharp.girelli.dev.br) 
+* [Diretrizes de codificação usadas neste projeto](https://npsharp.girelli.dev.br)
+* [Como enviar Pull Requests para revisão](https://npsharp.girelli.dev.br) 
+* [Onde encontrar tarefas e pontos do projeto que precisam de ajuda](https://npsharp.girelli.dev.br)  
+* [Como contribuir com traduções da interface](https://npsharp.girelli.dev.br)  
 
-This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
+O NPSHARP é um projeto independente.  
+Toda contribuição é bem-vinda, desde que siga as diretrizes e respeite a filosofia do editor:  
+**código limpo, controle total e liberdade ao desenvolvedor.**
 
-## License
 
-Copyright (c) Microsoft Corporation. All rights reserved.
+## Build
+O projeto suporta:
 
-Licensed under the [MIT](LICENSE.txt) license.
+- Build local
+- Build em containers
+- Modificações diretas sem patch reverso
+- Ambientes controlados e previsíveis
+
+Instruções detalhadas estão em `BUILDING.md`.
+Pronto para colocar no GitHub.
+
