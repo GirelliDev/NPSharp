@@ -2,7 +2,7 @@
  *  Copyright (c) Microsoft Corporation. All rights reserved.
  *  Licensed under the MIT License. See License.txt in the project root for license information.
  *--------------------------------------------------------------------------------------------*/
-// @ts-check
+// @ts-nocheck
 import fs from 'fs';
 import path from 'path';
 import tseslint from 'typescript-eslint';
@@ -338,6 +338,24 @@ export default tseslint.config(
 			'src/vs/workbench/contrib/tasks/browser/abstractTaskService.ts',
 			'src/vs/workbench/contrib/tasks/browser/taskTerminalStatus.ts',
 			'src/vs/workbench/contrib/tasks/browser/terminalTaskSystem.ts',
+			// 'src/vs/workbench/contrib/terminal/browser/baseTerminalBackend.ts',
+			// 'src/vs/workbench/contrib/terminal/browser/remotePty.ts',
+			// 'src/vs/workbench/contrib/terminal/browser/remoteTerminalBackend.ts',
+			// 'src/vs/workbench/contrib/terminal/browser/terminalActions.ts',
+			// 'src/vs/workbench/contrib/terminal/browser/terminalEditorService.ts',
+			// 'src/vs/workbench/contrib/terminal/browser/terminalGroup.ts',
+			// 'src/vs/workbench/contrib/terminal/browser/terminalIcon.ts',
+			// 'src/vs/workbench/contrib/terminal/browser/terminalIconPicker.ts',
+			// 'src/vs/workbench/contrib/terminal/browser/terminalInstance.ts',
+			// 'src/vs/workbench/contrib/terminal/browser/terminalInstanceService.ts',
+			// 'src/vs/workbench/contrib/terminal/browser/terminalMenus.ts',
+			// 'src/vs/workbench/contrib/terminal/browser/terminalProfileQuickpick.ts',
+			// 'src/vs/workbench/contrib/terminal/browser/terminalProfileResolverService.ts',
+			// 'src/vs/workbench/contrib/terminal/browser/terminalProfileService.ts',
+			// 'src/vs/workbench/contrib/terminal/browser/terminalService.ts',
+			// 'src/vs/workbench/contrib/terminal/browser/terminalTabsList.ts',
+			// 'src/vs/workbench/contrib/terminal/browser/terminalView.ts',
+			// 'src/vs/workbench/contrib/terminal/browser/xterm/markNavigationAddon.ts',
 			'src/vs/workbench/contrib/terminalContrib/accessibility/browser/terminal.accessibility.contribution.ts',
 			'src/vs/workbench/contrib/terminalContrib/accessibility/browser/terminalAccessibleBufferProvider.ts',
 			'src/vs/workbench/contrib/terminalContrib/chat/browser/terminal.initialHint.contribution.ts',

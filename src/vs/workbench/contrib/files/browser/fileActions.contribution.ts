@@ -749,6 +749,7 @@ MenuRegistry.appendMenuItem(MenuId.MenubarFileMenu, {
 	order: 2
 });
 
+
 // Go to menu
 
 MenuRegistry.appendMenuItem(MenuId.MenubarGoMenu, {

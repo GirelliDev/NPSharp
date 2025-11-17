@@ -117,7 +117,7 @@ function findGitDarwin(onValidate: (path: string) => boolean): Promise<IGit> {
 			}
 
 			// must check if XCode is installed
-			cp.exec('xcode-select -p', (err: any) => {
+			cp.exec('xcode-select -p', (err) => {
 				if (err && err.code === 2) {
 					// git is not installed, and launching /usr/bin/git
 					// will prompt the user to install it
@@ -1658,6 +1658,10 @@ export class Repository {
 		return result.stdout;
 	}
 
+	async diffIndexWithHEADShortStats(path?: string): Promise<CommitShortStat> {
+		return this.diffFilesShortStat(undefined, { cached: true, path });
+	}
+
 	diffIndexWith(ref: string): Promise<Change[]>;
 	diffIndexWith(ref: string, path: string): Promise<string>;
 	diffIndexWith(ref: string, path?: string | undefined): Promise<string | Change[]>;
@@ -1971,11 +1975,12 @@ export class Repository {
 		}
 	}
 
-	private async handleCommitError(commitErr: any): Promise<void> {
-		if (/not possible because you have unmerged files/.test(commitErr.stderr || '')) {
+
+	private async handleCommitError(commitErr: unknown): Promise<void> {
+		if (commitErr instanceof GitError && /not possible because you have unmerged files/.test(commitErr.stderr || '')) {
 			commitErr.gitErrorCode = GitErrorCodes.UnmergedChanges;
 			throw commitErr;
-		} else if (/Aborting commit due to empty commit message/.test(commitErr.stderr || '')) {
+		} else if (commitErr instanceof GitError && /Aborting commit due to empty commit message/.test(commitErr.stderr || '')) {
 			commitErr.gitErrorCode = GitErrorCodes.EmptyCommitMessage;
 			throw commitErr;
 		}
@@ -2109,8 +2114,8 @@ export class Repository {
 		const pathsByGroup = groupBy(paths.map(sanitizePath), p => path.dirname(p));
 		const groups = Object.keys(pathsByGroup).map(k => pathsByGroup[k]);
 
-		const limiter = new Limiter(5);
-		const promises: Promise<any>[] = [];
+		const limiter = new Limiter<IExecutionResult<string>>(5);
+		const promises: Promise<IExecutionResult<string>>[] = [];
 		const args = ['clean', '-f', '-q'];
 
 		for (const paths of groups) {

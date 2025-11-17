@@ -113,8 +113,8 @@ type GettingStartedStartEntryContent = BuiltinGettingStartedStartEntry[];
 export const startEntries: GettingStartedStartEntryContent = [
 	{
 		id: 'welcome.showNewFileEntries',
-		title: localize('gettingStarted.newFile.title', "New File..."),
-		description: localize('gettingStarted.newFile.description', "Open a new untitled text file, notebook, or custom editor."),
+		title: localize('gettingStarted.newFile.title', "Novo Arquivo..."),
+		description: localize('gettingStarted.newFile.description', "Abra um novo arquivo sem titulo, caderno, ou editor customisado"),
 		icon: Codicon.newFile,
 		content: {
 			type: 'startEntry',
@@ -123,8 +123,8 @@ export const startEntries: GettingStartedStartEntryContent = [
 	},
 	{
 		id: 'topLevelOpenMac',
-		title: localize('gettingStarted.openMac.title', "Open..."),
-		description: localize('gettingStarted.openMac.description', "Open a file or folder to start working"),
+		title: localize('gettingStarted.openMac.title', "Abrir..."),
+		description: localize('gettingStarted.openMac.description', "Abra um arquivo ou pasta e começe a trabalhar!"),
 		icon: Codicon.folderOpened,
 		when: '!isWeb && isMac',
 		content: {
@@ -134,8 +134,8 @@ export const startEntries: GettingStartedStartEntryContent = [
 	},
 	{
 		id: 'topLevelOpenFile',
-		title: localize('gettingStarted.openFile.title', "Open File..."),
-		description: localize('gettingStarted.openFile.description', "Open a file to start working"),
+		title: localize('gettingStarted.openFile.title', "Abrir arquivo..."),
+		description: localize('gettingStarted.openFile.description', "Abrir um arquivo para começar os trabalhos.."),
 		icon: Codicon.goToFile,
 		when: 'isWeb || !isMac',
 		content: {
@@ -145,8 +145,8 @@ export const startEntries: GettingStartedStartEntryContent = [
 	},
 	{
 		id: 'topLevelOpenFolder',
-		title: localize('gettingStarted.openFolder.title', "Open Folder..."),
-		description: localize('gettingStarted.openFolder.description', "Open a folder to start working"),
+		title: localize('gettingStarted.openFolder.title', "Abrir pasta..."),
+		description: localize('gettingStarted.openFolder.description', "Abrir uma pasta como Espaço de Trabalho"),
 		icon: Codicon.folderOpened,
 		when: '!isWeb && !isMac',
 		content: {
@@ -156,8 +156,8 @@ export const startEntries: GettingStartedStartEntryContent = [
 	},
 	{
 		id: 'topLevelOpenFolderWeb',
-		title: localize('gettingStarted.openFolder.title', "Open Folder..."),
-		description: localize('gettingStarted.openFolder.description', "Open a folder to start working"),
+		title: localize('gettingStarted.openFolder.title', "Abrir pasta..."),
+		description: localize('gettingStarted.openFolder.description', "Abrir uma pasta como Espaço de Trabalho"),
 		icon: Codicon.folderOpened,
 		when: '!openFolderWorkspaceSupport && workbenchState == \'workspace\'',
 		content: {
@@ -167,8 +167,8 @@ export const startEntries: GettingStartedStartEntryContent = [
 	},
 	{
 		id: 'topLevelGitClone',
-		title: localize('gettingStarted.topLevelGitClone.title', "Clone Git Repository..."),
-		description: localize('gettingStarted.topLevelGitClone.description', "Clone a remote repository to a local folder"),
+		title: localize('gettingStarted.topLevelGitClone.title', "Clone um repositorio GIT..."),
+		description: localize('gettingStarted.topLevelGitClone.description', "Clone um Repositorio para uma pasta local (exige git e github instalados)"),
 		when: 'config.git.enabled && !git.missing',
 		icon: Codicon.sourceControl,
 		content: {
@@ -178,8 +178,8 @@ export const startEntries: GettingStartedStartEntryContent = [
 	},
 	{
 		id: 'topLevelGitOpen',
-		title: localize('gettingStarted.topLevelGitOpen.title', "Open Repository..."),
-		description: localize('gettingStarted.topLevelGitOpen.description', "Connect to a remote repository or pull request to browse, search, edit, and commit"),
+		title: localize('gettingStarted.topLevelGitOpen.title', "Abrir Repositorio..."),
+		description: localize('gettingStarted.topLevelGitOpen.description', "Conecte a um Repositorio remoto, ou Pull Request para pesquisar, editar e commitar"),
 		when: 'workspacePlatform == \'webworker\'',
 		icon: Codicon.sourceControl,
 		content: {
@@ -189,8 +189,8 @@ export const startEntries: GettingStartedStartEntryContent = [
 	},
 	{
 		id: 'topLevelRemoteOpen',
-		title: localize('gettingStarted.topLevelRemoteOpen.title', "Connect to..."),
-		description: localize('gettingStarted.topLevelRemoteOpen.description', "Connect to remote development workspaces."),
+		title: localize('gettingStarted.topLevelRemoteOpen.title', "Conectar..."),
+		description: localize('gettingStarted.topLevelRemoteOpen.description', "Conectar a Espaços de Trabalho Remotos"),
 		when: '!isWeb',
 		icon: Codicon.remote,
 		content: {
@@ -200,8 +200,8 @@ export const startEntries: GettingStartedStartEntryContent = [
 	},
 	{
 		id: 'topLevelOpenTunnel',
-		title: localize('gettingStarted.topLevelOpenTunnel.title', "Open Tunnel..."),
-		description: localize('gettingStarted.topLevelOpenTunnel.description', "Connect to a remote machine through a Tunnel"),
+		title: localize('gettingStarted.topLevelOpenTunnel.title', "Abrir tunel"),
+		description: localize('gettingStarted.topLevelOpenTunnel.description', "Conectar a uma area de trabalho remota via tunel ssh(como um túnel de amor secreto)"),
 		when: 'isWeb && showRemoteStartEntryInWeb',
 		icon: Codicon.remote,
 		content: {
@@ -209,17 +209,17 @@ export const startEntries: GettingStartedStartEntryContent = [
 			command: 'command:workbench.action.remote.showWebStartEntryActions',
 		}
 	},
-	{
-		id: 'topLevelNewWorkspaceChat',
-		title: localize('gettingStarted.newWorkspaceChat.title', "Generate New Workspace..."),
-		description: localize('gettingStarted.newWorkspaceChat.description', "Chat to create a new workspace"),
-		icon: Codicon.chatSparkle,
-		when: '!isWeb && !chatSetupHidden',
-		content: {
-			type: 'startEntry',
-			command: 'command:welcome.newWorkspaceChat',
-		}
-	},
+	//{
+	//	id: 'topLevelNewWorkspaceChat',
+	//	title: localize('gettingStarted.newWorkspaceChat.title', "Generate New Workspace..."),
+	//	description: localize('gettingStarted.newWorkspaceChat.description', "Chat to create a new workspace"),
+	//	icon: Codicon.chatSparkle,
+	//	when: '!isWeb && !chatSetupHidden',
+	//	content: {
+	//		type: 'startEntry',
+	//	command: 'command:welcome.newWorkspaceChat',
+	//	}
+	//	},
 ];
 
 const Button = (title: string, href: string) => `[${title}](${href})`;
@@ -251,12 +251,12 @@ function createCopilotSetupStep(id: string, button: string, when: string, includ
 export const walkthroughs: GettingStartedWalkthroughContent = [
 	{
 		id: 'Setup',
-		title: localize('gettingStarted.setup.title', "Get started with VS Code"),
-		description: localize('gettingStarted.setup.description', "Customize your editor, learn the basics, and start coding"),
+		title: localize('gettingStarted.setup.title', "Comece a programar com o Notepad #"),
+		description: localize('gettingStarted.setup.description', "Customise seu editor, aprenda o basico, e faça codigo!"),
 		isFeatured: true,
 		icon: setupIcon,
 		when: '!isWeb',
-		walkthroughPageTitle: localize('gettingStarted.setup.walkthroughPageTitle', 'Setup VS Code'),
+		walkthroughPageTitle: localize('gettingStarted.setup.walkthroughPageTitle', 'Setup NPSharp'),
 		next: 'Beginner',
 		content: {
 			type: 'steps',
@@ -267,33 +267,33 @@ export const walkthroughs: GettingStartedWalkthroughContent = [
 				createCopilotSetupStep('CopilotSetupSignedIn', CopilotSignedInButton, '!chatEntitlementSignedOut && (!chatSetupInstalled || chatSetupDisabled || chatPlanCanSignUp)', false),
 				{
 					id: 'pickColorTheme',
-					title: localize('gettingStarted.pickColor.title', "Choose your theme"),
-					description: localize('gettingStarted.pickColor.description.interpolated', "The right theme helps you focus on your code, is easy on your eyes, and is simply more fun to use.\n{0}", Button(localize('titleID', "Browse Color Themes"), 'command:workbench.action.selectTheme')),
+					title: localize('gettingStarted.pickColor.title', "Escolha seu Tema"),
+					description: localize('gettingStarted.pickColor.description.interpolated', "O tema correto pode ajudar a focar em seu codigo, e em alguns casos, se sentir especial (to falando de tu mesmo, usuaria especial!)\n{0}", Button(localize('titleID', "Browse Color Themes"), 'command:workbench.action.selectTheme')),
 					completionEvents: [
 						'onSettingChanged:workbench.colorTheme',
 						'onCommand:workbench.action.selectTheme'
 					],
 					media: { type: 'markdown', path: 'theme_picker', }
-				},
-				{
-					id: 'videoTutorial',
-					title: localize('gettingStarted.videoTutorial.title', "Watch video tutorials"),
-					description: localize('gettingStarted.videoTutorial.description.interpolated', "Watch the first in a series of short & practical video tutorials for VS Code's key features.\n{0}", Button(localize('watch', "Watch Tutorial"), 'https://aka.ms/vscode-getting-started-video')),
-					media: { type: 'svg', altText: 'VS Code Settings', path: 'learn.svg' },
 				}
+				//{
+				//	id: 'videoTutorial',
+				//	title: localize('gettingStarted.videoTutorial.title', "Watch video tutorials"),
+				//	description: localize('gettingStarted.videoTutorial.description.interpolated', "Watch the first //in a series of short & practical video tutorials for VS Code's key features.\n{0}", Button(localize('watch', "Watch Tutorial"), 'https://aka.ms/vscode-getting-started-video')),
+				//	media: { type: 'svg', altText: 'VS Code Settings', path: 'learn.svg' },
+				//	}
 			]
 		}
 	},
 
 	{
 		id: 'SetupWeb',
-		title: localize('gettingStarted.setupWeb.title', "Get Started with VS Code for the Web"),
-		description: localize('gettingStarted.setupWeb.description', "Customize your editor, learn the basics, and start coding"),
+		title: localize('gettingStarted.setupWeb.title', "Comece a programar com o Notepad #"),
+		description: localize('gettingStarted.setupWeb.description', "Customise seu editor, aprenda o basico, e faça codigo!"),
 		isFeatured: true,
 		icon: setupIcon,
 		when: 'isWeb',
 		next: 'Beginner',
-		walkthroughPageTitle: localize('gettingStarted.setupWeb.walkthroughPageTitle', 'Setup VS Code Web'),
+		walkthroughPageTitle: localize('gettingStarted.setupWeb.walkthroughPageTitle', 'Setup NPSharp Web'),
 		content: {
 			type: 'steps',
 			steps: [

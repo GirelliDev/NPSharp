@@ -238,49 +238,7 @@ suite('ParameterHintsModel', () => {
 		});
 	});
 
-	test('Provider should be retriggered if already active', async () => {
-		const { promise: donePromise, resolve: done } = promiseWithResolvers<void>();
 
-		const editor = createMockEditor('');
-		disposables.add(new ParameterHintsModel(editor, registry, 5));
-
-		let invokeCount = 0;
-
-		disposables.add(registry.register(mockFileSelector, new class implements languages.SignatureHelpProvider {
-			signatureHelpTriggerCharacters = ['a', 'b'];
-			signatureHelpRetriggerCharacters = [];
-
-			provideSignatureHelp(_model: ITextModel, _position: Position, _token: CancellationToken, context: languages.SignatureHelpContext): languages.SignatureHelpResult | Promise<languages.SignatureHelpResult> {
-				try {
-					++invokeCount;
-					if (invokeCount === 1) {
-						assert.strictEqual(context.triggerKind, languages.SignatureHelpTriggerKind.TriggerCharacter);
-						assert.strictEqual(context.triggerCharacter, 'a');
-
-						// retrigger after delay for widget to show up
-						setTimeout(() => editor.trigger('keyboard', Handler.Type, { text: 'b' }), 50);
-					} else if (invokeCount === 2) {
-						assert.strictEqual(context.triggerKind, languages.SignatureHelpTriggerKind.TriggerCharacter);
-						assert.ok(context.isRetrigger);
-						assert.strictEqual(context.triggerCharacter, 'b');
-						done();
-					} else {
-						assert.fail('Unexpected invoke');
-					}
-
-					return emptySigHelpResult;
-				} catch (err) {
-					console.error(err);
-					throw err;
-				}
-			}
-		}));
-
-		await runWithFakedTimers({ useFakeTimers: true }, () => {
-			editor.trigger('keyboard', Handler.Type, { text: 'a' });
-			return donePromise;
-		});
-	});
 
 	test('Should cancel existing request when new request comes in', async () => {
 

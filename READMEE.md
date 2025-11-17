@@ -1,16 +1,7 @@
 # NPSHARP – Editor de Código Aberto e Independente
-[![Feature Requests](https://img.shields.io/github/issues/microsoft/vscode/feature-request.svg)](https://github.com/girellidev/npsharp/issues?q=is%3Aopen+is%3Aissue+label%3Afeature-request+sort%3Areactions-%2B1-desc)
-[![Bugs](https://img.shields.io/github/issues/microsoft/vscode/bug.svg)](https://github.com/girellidev/npsharp/issues?utf8=✓&q=is%3Aissue+is%3Aopen+label%3Abug)
 
-
-
-[Notepad Sharp](https://npsharp.girelli.dev.br) é uma distribuição do [code-oss](https://github.com/microssoft/vscode) distribuido por uma [Licença Girellidev Padrão](https://npsharp.girelli.dev.br/licenca)
-
-[Notepad Sharp](https://npsharp.girelli.dev.br) reúne tudo o que o Visual Studio Code oferece — só que sem telemetria, sem coleta escondida, sem travas, e com otimizações feitas por alguém que realmente escreve código todos os dias.  
-É a experiência completa do editor, mas construída para desenvolvedores de verdade, por um desenvolvedor que não aceita ficar abaixo de ninguém.  
-Aqui a ferramenta trabalha no seu nível — acima do resto.
-
-O Notepad Sharp é atualizado Mensalmente, com novas funcionalidades ou Fixes de Bugs. Você pode baixar-lo em Windows,MacOS, e linux, no [Site oficial](https://npsharp.girelli.dev.br/download)
+Este repositório contém a base do **NPSHARP**, um fork limpo e próprio do Code-OSS.  
+Aqui nasce o núcleo do projeto, sem modificações estéticas pesadas, sem features adicionais drásticas — apenas a fundação sólida sobre a qual tudo será construído.
 
 A motivação do NPSHARP é simples e direta: criar um editor que seja **realmente independente**, **controlado pelo desenvolvedor**, **aberto ao público**, e que permita evolução contínua sem depender de decisões corporativas ou licenças restritivas.  
 O que está aqui é o ponto de partida. É o esqueleto, o motor cru, a base verificável.
@@ -31,7 +22,18 @@ Este repositório contém:
 Este repositório **não** é a versão distribuída no site npsharp.girelli.dev.br.
 
 ## O que NÃO é este repositório
-A versão oferecida no [site](https://npsharp.girelli.dev.br)
+A versão oferecida em:
+
+https://npsharp.girelli.dev.br  
+
+é um produto completamente diferente. Lá é distribuído o **NPSHARP Heavily Modified**, com:
+
+- Interface aprimorada
+- Temas próprios
+- Extensões internas
+- Recursos exclusivos
+- Automação integrada
+- Estilo e comportamento diferenciados
 
 É outro software. Compartilha origem, mas segue caminho próprio.
 
@@ -63,28 +65,18 @@ O projeto utiliza uma **licença personalizada**, permitindo:
 
 O texto completo da licença está no arquivo LICENSE e deve ser respeitado integralmente.
 
-## Contribuindo
+## Contribuição
+Pull requests são bem-vindos.
 
-Existem várias formas de participar do desenvolvimento do NPSHARP:
+Para contribuir:
 
-* Reportar bugs e sugerir novas funcionalidades na aba de Issues do repositório.
-* Revisar mudanças no código enviadas por outros contribuidores.
-* Ajudar a melhorar a documentação com correções, melhorias ou novos conteúdos.
+- Mantenha o padrão de código limpo
+- Descreva alterações com clareza
+- Documente comportamento inesperado
+- Evite mudanças estéticas sem motivo técnico
+- Respeite a licença personalizada
 
-Se você deseja contribuir diretamente para o código-fonte,
-consulte o guia completo de contribuição deste projeto:
-
-* [Como compilar e executar a partir do código-fonte](https://npsharp.girelli.dev.br) 
-* [Fluxo de desenvolvimento: depuração, testes e organização interna](https://npsharp.girelli.dev.br) 
-* [Diretrizes de codificação usadas neste projeto](https://npsharp.girelli.dev.br)
-* [Como enviar Pull Requests para revisão](https://npsharp.girelli.dev.br) 
-* [Onde encontrar tarefas e pontos do projeto que precisam de ajuda](https://npsharp.girelli.dev.br)  
-* [Como contribuir com traduções da interface](https://npsharp.girelli.dev.br)  
-
-O NPSHARP é um projeto independente.  
-Toda contribuição é bem-vinda, desde que siga as diretrizes e respeite a filosofia do editor:  
-**código limpo, controle total e liberdade ao desenvolvedor.**
-
+O objetivo deste repositório é permitir evolução ordenada do núcleo do editor.
 
 ## Build
 O projeto suporta:

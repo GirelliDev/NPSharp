@@ -1190,7 +1190,7 @@ export class ChatWidget extends Disposable implements IChatWidget {
 			previousChatsLink.textContent = localize('chat.history.showMore', 'Chat history...');
 			previousChatsLink.setAttribute('role', 'button');
 			previousChatsLink.setAttribute('tabindex', '0');
-			previousChatsLink.setAttribute('aria-label', localize('chat.history.showMoreAriaLabel', 'Open chat history'));
+			//previousChatsLink.setAttribute('aria-label', localize('chat.history.showMoreAriaLabel', 'Open chat history'));
 
 			// Add hover tooltip for the link at the end of the list
 			const hoverContent = localize('chat.history.showMoreHover', 'Show chat history...');

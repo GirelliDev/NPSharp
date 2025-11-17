@@ -9,7 +9,7 @@ import { Command, commands, Disposable, MessageOptions, Position, QuickPickItem,
 import TelemetryReporter from '@vscode/extension-telemetry';
 import { uniqueNamesGenerator, adjectives, animals, colors, NumberDictionary } from '@joaomoreno/unique-names-generator';
 import { ForcePushMode, GitErrorCodes, RefType, Status, CommitOptions, RemoteSourcePublisher, Remote, Branch, Ref } from './api/git';
-import { Git, Stash, Worktree } from './git';
+import { Git, GitError, Stash, Worktree } from './git';
 import { Model } from './model';
 import { GitResourceGroup, Repository, Resource, ResourceGroupType } from './repository';
 import { DiffEditorSelectionHunkToolbarContext, LineChange, applyLineChanges, getIndexDiffInformation, getModifiedRange, getWorkingTreeDiffInformation, intersectDiffWithRange, invertLineChange, toLineChanges, toLineRanges, compareLineChanges } from './staging';
@@ -365,8 +365,8 @@ interface ScmCommand {
 const Commands: ScmCommand[] = [];
 
 function command(commandId: string, options: ScmCommandOptions = {}): Function {
-	return (value: any, context: ClassMethodDecoratorContext) => {
-		if (context.kind !== 'method') {
+	return (value: unknown, context: ClassMethodDecoratorContext) => {
+		if (typeof value !== 'function' || context.kind !== 'method') {
 			throw new Error('not supported');
 		}
 		const key = context.name.toString();
@@ -3462,12 +3462,15 @@ export class CommandCenter {
 			return;
 		}
 
-		const message = l10n.t('Proceed with migrating changes to the current repository?');
-		const detail = l10n.t('This will apply the worktree\'s changes to this repository and discard changes in the worktree.\nThis is IRREVERSIBLE!');
-		const proceed = l10n.t('Proceed');
-		const pick = await window.showWarningMessage(message, { modal: true, detail }, proceed);
-		if (pick !== proceed) {
-			return;
+		if (worktreeUri === undefined) {
+			// Non-interactive migration, do not show confirmation dialog
+			const message = l10n.t('Proceed with migrating changes to the current repository?');
+			const detail = l10n.t('This will apply the worktree\'s changes to this repository and discard changes in the worktree.\nThis is IRREVERSIBLE!');
+			const proceed = l10n.t('Proceed');
+			const pick = await window.showWarningMessage(message, { modal: true, detail }, proceed);
+			if (pick !== proceed) {
+				return;
+			}
 		}
 
 		await worktreeRepository.createStash(undefined, true);
@@ -3588,10 +3591,8 @@ export class CommandCenter {
 		}
 	}
 
-	@command('git.createWorktree')
-	async createWorktree(repository: any): Promise<void> {
-		repository = this.model.getRepository(repository);
-
+	@command('git.createWorktree', { repository: true })
+	async createWorktree(repository?: Repository): Promise<void> {
 		if (!repository) {
 			// Single repository/submodule/worktree
 			if (this.model.repositories.length === 1) {
@@ -3783,9 +3784,9 @@ export class CommandCenter {
 				this.globalState.update(`${CommandCenter.WORKTREE_ROOT_KEY}:${repository.root}`, worktreeRoot);
 			}
 		} catch (err) {
-			if (err.gitErrorCode === GitErrorCodes.WorktreeAlreadyExists) {
+			if (err instanceof GitError && err.gitErrorCode === GitErrorCodes.WorktreeAlreadyExists) {
 				await this.handleWorktreeAlreadyExists(err);
-			} else if (err.gitErrorCode === GitErrorCodes.WorktreeBranchAlreadyUsed) {
+			} else if (err instanceof GitError && err.gitErrorCode === GitErrorCodes.WorktreeBranchAlreadyUsed) {
 				await this.handleWorktreeBranchAlreadyUsed(err);
 			} else {
 				throw err;
@@ -3795,8 +3796,8 @@ export class CommandCenter {
 		}
 	}
 
-	private async handleWorktreeBranchAlreadyUsed(err: any): Promise<void> {
-		const match = err.stderr.match(/fatal: '([^']+)' is already used by worktree at '([^']+)'/);
+	private async handleWorktreeBranchAlreadyUsed(err: GitError): Promise<void> {
+		const match = err.stderr?.match(/fatal: '([^']+)' is already used by worktree at '([^']+)'/);
 
 		if (!match) {
 			return;
@@ -3807,8 +3808,8 @@ export class CommandCenter {
 		await this.handleWorktreeConflict(path, message);
 	}
 
-	private async handleWorktreeAlreadyExists(err: any): Promise<void> {
-		const match = err.stderr.match(/fatal: '([^']+)'/);
+	private async handleWorktreeAlreadyExists(err: GitError): Promise<void> {
+		const match = err.stderr?.match(/fatal: '([^']+)'/);
 
 		if (!match) {
 			return;
@@ -3852,11 +3853,11 @@ export class CommandCenter {
 			return;
 		}
 
-		// Dispose worktree repository
-		this.model.disposeRepository(repository);
-
 		try {
 			await mainRepository.deleteWorktree(repository.root);
+
+			// Dispose worktree repository
+			this.model.disposeRepository(repository);
 		} catch (err) {
 			if (err.gitErrorCode === GitErrorCodes.WorktreeContainsChanges) {
 				const forceDelete = l10n.t('Force Delete');
@@ -3864,8 +3865,9 @@ export class CommandCenter {
 				const choice = await window.showWarningMessage(message, { modal: true }, forceDelete);
 				if (choice === forceDelete) {
 					await mainRepository.deleteWorktree(repository.root, { force: true });
-				} else {
-					await this.model.openRepository(repository.root);
+
+					// Dispose worktree repository
+					this.model.disposeRepository(repository);
 				}
 
 				return;
