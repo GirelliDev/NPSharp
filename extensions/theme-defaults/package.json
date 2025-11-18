@@ -1,0 +1,77 @@
+{
+  "name": "theme-defaults",
+  "displayName": "%displayName%",
+  "description": "%description%",
+  "categories": [
+    "Themes"
+  ],
+  "version": "1.0.0",
+  "publisher": "vscode",
+  "license": "MIT",
+  "engines": {
+    "vscode": "*"
+  },
+  "contributes": {
+    "themes": [
+      {
+        "id": "npsblackboardoled",
+        "label": "BlackBoard OLED",
+        "uiTheme": "vs-dark",
+        "path": "./themes/dark_plus.json"
+      },
+      {
+        "id": "npsblackboard",
+        "label": "Blackboard",
+        "uiTheme": "vs-dark",
+        "path": "./themes/dark_modern.json"
+      },
+      {
+        "id": "npstemadepsicopata",
+        "label": "Blackboard Light",
+        "uiTheme": "vs",
+        "path": "./themes/light_plus.json"
+      },
+      {
+        "id": "npssolarizedplus",
+        "label": "Solarized Light Plus",
+        "uiTheme": "vs",
+        "path": "./themes/light_modern.json"
+      },
+      {
+        "id": "npsdarkplus",
+        "label": "Notepad Sharp Dark+",
+        "uiTheme": "vs-dark",
+        "path": "./themes/dark_vs.json"
+      },
+      {
+        "id": "npslightplus",
+        "label": "Notepad Sharp Light+",
+        "uiTheme": "vs",
+        "path": "./themes/light_vs.json"
+      },
+      {
+        "id": "npsvoidloveplus",
+        "label": "Notepad Sharp VoidLove+",
+        "uiTheme": "vs-dark",
+        "path": "./themes/hc_black.json"
+      },
+      {
+        "id": "npscrimsonplus",
+        "label": "Notepad Sharp Crimson+",
+        "uiTheme": "vs-dark",
+        "path": "./themes/hc_light.json"
+      }
+    ],
+    "iconThemes": [
+      {
+        "id": "vs-minimal",
+        "label": "%minimalIconThemeLabel%",
+        "path": "./fileicons/vs_minimal-icon-theme.json"
+      }
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/girellidev/npsharp.git"
+  }
+}
